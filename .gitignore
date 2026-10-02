@@ -1,0 +1,27 @@
+# Dependencies — reinstallable from package-lock.json, must never be committed.
+# 5,307 node_modules files were tracked in this repo before this file existed.
+node_modules/
+
+# Build output
+dist/
+build/
+*.tsbuildinfo
+
+# Secrets and local config
+.env
+.env.local
+.env.*.local
+!.env.example
+
+# Editor / OS
+.DS_Store
+.vscode/
+.idea/
+*.swp
+
+# Logs
+*.log
+npm-debug.log*
+
+# mongodb-memory-server binary cache
+.cache/
