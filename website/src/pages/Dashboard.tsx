@@ -2,6 +2,16 @@ import { useState, useEffect } from "react";
 import { RiRobot2Line } from "react-icons/ri";
 import { useNavigate } from "react-router-dom";
 
+// API base URL. Was hardcoded as "http://localhost:5000" in two places, which
+// meant the app could not be deployed or even run on a different port without
+// editing source. Now configurable via website/.env (VITE_API_URL).
+//
+// The fallback is 5050, not 5000: on macOS, port 5000 is taken by the AirPlay
+// Receiver in Control Centre, which answers with 403 and makes the API look
+// broken when it is fine.
+const API_BASE = import.meta.env.VITE_API_URL ?? 'http://localhost:5050';
+
+
 interface Pattern {
   type: string;
   severity: string;
@@ -81,7 +91,7 @@ const Dashboard = () => {
       setLoading(true);
       console.log('Fetching merchants from API...');
       const response = await fetch(
-        "http://localhost:5000/api/public/merchants?limit=100",
+        `${API_BASE}/api/public/merchants?limit=100`,
         {
           cache: 'no-cache',
           headers: {
@@ -153,21 +163,11 @@ const Dashboard = () => {
     );
   }
 
-  const getRiskBadgeClass = (risk: string) => {
-    switch (risk) {
-      case "CRITICAL":
-        return "bg-red-100 text-red-800 border-red-300";
-      case "HIGH_RISK":
-        return "bg-orange-100 text-orange-800 border-orange-300";
-      case "NEEDS_ATTENTION":
-        return "bg-amber-100 text-amber-800 border-amber-300";
-      case "HEALTHY":
-        return "bg-green-100 text-green-800 border-green-300";
-      default:
-        return "bg-gray-100 text-gray-800 border-gray-300";
-    }
-  };
-
+  // NOTE: getRiskBadgeClass and getActionIcon used to sit here. Both were
+  // declared and never rendered, and tsconfig.app.json sets noUnusedLocals,
+  // so `npm run build` failed on them — meaning no production bundle had ever
+  // been built. Vite's dev server uses esbuild, which strips TypeScript types
+  // WITHOUT type-checking them, so `npm run dev` never surfaced it.
   const getTrustLabel = (riskLevel: string) => {
     switch (riskLevel) {
       case "CRITICAL":
@@ -183,21 +183,6 @@ const Dashboard = () => {
     }
   };
 
-  const getActionIcon = (urgency: string) => {
-    switch (urgency.toUpperCase()) {
-      case "URGENT":
-        return "❌";
-      case "HIGH":
-        return "👀";
-      case "MEDIUM":
-        return "👀";
-      case "LOW":
-        return "✅";
-      default:
-        return "👀";
-    }
-  };
-
   const handleAIAnalysis = async (merchant: MerchantData) => {
     setSelectedMerchant(merchant);
     setIsModalOpen(true);
@@ -207,7 +192,7 @@ const Dashboard = () => {
     try {
       console.log("Requesting AI analysis for merchant:", merchant.merchantId);
       const response = await fetch(
-        `http://localhost:5000/api/public/merchants/${merchant.merchantId}/ai-analysis`,
+        `${API_BASE}/api/public/merchants/${merchant.merchantId}/ai-analysis`,
         {
           method: "POST",
           headers: {
