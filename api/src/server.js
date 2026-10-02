@@ -27,7 +27,7 @@ app.use('/api/public', publicRoutes);
 app.get("/", (req, res) => {
    res.json({
       status: "running",
-      message: "Subscription Firewall API v2.0",
+      message: "Autopay Shield API v2.0",
       endpoints: {
          admin: {
             ingest: "POST /api/admin/ingest",

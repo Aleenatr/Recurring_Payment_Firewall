@@ -1,4 +1,4 @@
-# Subscription Firewall
+# Autopay Shield
 
 Batch risk-scoring for recurring-payment merchants.
 
@@ -13,9 +13,6 @@ events, derives six normalised behavioural signals, clusters the whole merchant
 population, and produces a **trust score from 0 to 100 where higher is safer**,
 bucketed into four bands: `HEALTHY` / `NEEDS_ATTENTION` / `HIGH_RISK` /
 `CRITICAL`.
-
-> **Naming:** the repository is "Subscription Firewall". It is referred to as
-> "Autopay Shield" in some external documents. Same project, older name.
 
 ---
 

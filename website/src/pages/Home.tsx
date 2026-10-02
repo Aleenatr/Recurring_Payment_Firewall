@@ -11,7 +11,7 @@ const Home = () => {
         <div className="container mx-auto px-4 py-4 flex justify-between items-center">
           <div className="flex items-center gap-2">
             <span className="text-xl font-bold text-gray-900">
-              Subscription Firewall
+              Autopay Shield
             </span>
           </div>
           <button
@@ -185,7 +185,7 @@ const Home = () => {
         <div className="mb-20 max-w-6xl mx-auto">
           <div className="text-center mb-12">
             <h2 className="text-4xl font-black text-gray-900 mb-4">
-              How Subscription Firewall Works
+              How Autopay Shield Works
             </h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
               Advanced AI monitors every transaction, analyzes patterns, and
