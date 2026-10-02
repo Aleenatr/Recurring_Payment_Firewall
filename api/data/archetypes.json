@@ -1,0 +1,108 @@
+[
+  {
+    "merchant": {
+      "merchant_id": "MRC_001",
+      "merchant_name": "StreamFlix Pro Ltd.",
+      "legal_name": "StreamFlix Pro Limited",
+      "country": "US",
+      "category_code": "DIGITAL_MEDIA",
+      "first_seen_at": "2025-08-01T00:00:00Z",
+      "website_url": "https://example-streamflix.test",
+      "customer_support_channels": ["email"]
+    },
+    "subscriptions": [
+      { "subscription_id": "SUB_001", "user_hash": "u_aa11", "billing_interval": "monthly", "trial_days": 7, "start_date": "2025-08-01" },
+      { "subscription_id": "SUB_002", "user_hash": "u_bb22", "billing_interval": "monthly", "trial_days": 7, "start_date": "2025-09-01" },
+      { "subscription_id": "SUB_003", "user_hash": "u_cc33", "billing_interval": "monthly", "trial_days": 0, "start_date": "2025-10-01" }
+    ],
+    "lifecycle_events": [
+      { "subscription_id": "SUB_001", "event_type": "price_change", "timestamp": "2025-11-01T00:00:00Z", "old_amount": 4.99, "new_amount": 7.99, "notification_sent": false },
+      { "subscription_id": "SUB_001", "event_type": "price_change", "timestamp": "2026-02-01T00:00:00Z", "old_amount": 7.99, "new_amount": 12.99, "notification_sent": false },
+      { "subscription_id": "SUB_001", "event_type": "price_change", "timestamp": "2026-05-01T00:00:00Z", "old_amount": 12.99, "new_amount": 19.99, "notification_sent": false },
+      { "subscription_id": "SUB_002", "event_type": "cancellation_requested", "timestamp": "2026-03-14T10:00:00Z" },
+      { "subscription_id": "SUB_003", "event_type": "cancellation_requested", "timestamp": "2026-06-02T09:00:00Z" },
+      { "subscription_id": "SUB_003", "event_type": "cancellation_requested", "timestamp": "2026-07-11T09:00:00Z" }
+    ],
+    "transactions": [
+      { "transaction_id": "TXN_0001", "subscription_id": "SUB_001", "user_hash": "u_aa11", "amount_usd": 4.99,  "status": "success", "attempt": 1, "timestamp": "2025-08-01T00:00:00Z", "descriptor": "SFLIX*PRO",       "payment_method_type": "card", "card_bin": "424242", "risk_signals": { "cvv_match": true,  "avs_match": "FULL",    "ip_country": "US", "card_country": "US" } },
+      { "transaction_id": "TXN_0002", "subscription_id": "SUB_001", "user_hash": "u_aa11", "amount_usd": 4.99,  "status": "success", "attempt": 1, "timestamp": "2025-09-01T00:00:00Z", "descriptor": "SFLIX*PRO",       "payment_method_type": "card", "card_bin": "424242", "risk_signals": { "cvv_match": true,  "avs_match": "FULL",    "ip_country": "US", "card_country": "US" } },
+      { "transaction_id": "TXN_0003", "subscription_id": "SUB_002", "user_hash": "u_bb22", "amount_usd": 4.99,  "status": "success", "attempt": 1, "timestamp": "2025-10-01T00:00:00Z", "descriptor": "STREAMFLIX PRO",  "payment_method_type": "card", "card_bin": "510510", "risk_signals": { "cvv_match": true,  "avs_match": "PARTIAL", "ip_country": "US", "card_country": "US" } },
+      { "transaction_id": "TXN_0004", "subscription_id": "SUB_001", "user_hash": "u_aa11", "amount_usd": 7.99,  "status": "success", "attempt": 1, "timestamp": "2025-11-01T00:00:00Z", "descriptor": "SF*PREMIUM",      "payment_method_type": "card", "card_bin": "424242", "risk_signals": { "cvv_match": true,  "avs_match": "FULL",    "ip_country": "US", "card_country": "US" } },
+      { "transaction_id": "TXN_0005", "subscription_id": "SUB_002", "user_hash": "u_bb22", "amount_usd": 7.99,  "status": "failed",  "attempt": 1, "timestamp": "2025-12-01T00:00:00Z", "descriptor": "SF*PREMIUM",      "failure_reason": "insufficient_funds", "payment_method_type": "card", "card_bin": "510510", "risk_signals": { "cvv_match": true, "avs_match": "PARTIAL", "ip_country": "US", "card_country": "US" } },
+      { "transaction_id": "TXN_0006", "subscription_id": "SUB_002", "user_hash": "u_bb22", "amount_usd": 7.99,  "status": "failed",  "attempt": 2, "timestamp": "2025-12-01T06:00:00Z", "descriptor": "SF*PREMIUM",      "failure_reason": "insufficient_funds", "payment_method_type": "card", "card_bin": "510510", "risk_signals": { "cvv_match": true, "avs_match": "PARTIAL", "ip_country": "US", "card_country": "US" } },
+      { "transaction_id": "TXN_0007", "subscription_id": "SUB_002", "user_hash": "u_bb22", "amount_usd": 7.99,  "status": "failed",  "attempt": 3, "timestamp": "2025-12-01T14:00:00Z", "descriptor": "STRMFLX",         "failure_reason": "insufficient_funds", "payment_method_type": "card", "card_bin": "510510", "risk_signals": { "cvv_match": true, "avs_match": "PARTIAL", "ip_country": "US", "card_country": "US" } },
+      { "transaction_id": "TXN_0008", "subscription_id": "SUB_002", "user_hash": "u_bb22", "amount_usd": 7.99,  "status": "success", "attempt": 4, "timestamp": "2025-12-01T22:00:00Z", "descriptor": "STRMFLX",         "payment_method_type": "card", "card_bin": "510510", "risk_signals": { "cvv_match": true,  "avs_match": "PARTIAL", "ip_country": "US", "card_country": "US" } },
+      { "transaction_id": "TXN_0009", "subscription_id": "SUB_003", "user_hash": "u_cc33", "amount_usd": 12.99, "status": "success", "attempt": 1, "timestamp": "2026-02-01T00:00:00Z", "descriptor": "STRMFLX",         "dispute_filed_at": "2026-02-10T00:00:00Z", "dispute_reason": "unrecognized_charge", "dispute_status": "open", "payment_method_type": "card", "card_bin": "601100", "risk_signals": { "cvv_match": false, "avs_match": "NONE", "ip_country": "CA", "card_country": "US" } },
+      { "transaction_id": "TXN_0010", "subscription_id": "SUB_001", "user_hash": "u_aa11", "amount_usd": 12.99, "status": "success", "attempt": 1, "timestamp": "2026-03-01T00:00:00Z", "descriptor": "SFX BILLING",     "payment_method_type": "card", "card_bin": "424242", "risk_signals": { "cvv_match": true,  "avs_match": "FULL",    "ip_country": "US", "card_country": "US" } },
+      { "transaction_id": "TXN_0011", "subscription_id": "SUB_003", "user_hash": "u_cc33", "amount_usd": 12.99, "status": "success", "attempt": 1, "timestamp": "2026-04-01T00:00:00Z", "descriptor": "SFX BILLING",     "chargeback_filed_at": "2026-04-20T00:00:00Z", "chargeback_reason": "fraud", "chargeback_status": "lost", "payment_method_type": "card", "card_bin": "601100", "risk_signals": { "cvv_match": false, "avs_match": "NONE", "ip_country": "CA", "card_country": "US" } },
+      { "transaction_id": "TXN_0012", "subscription_id": "SUB_001", "user_hash": "u_aa11", "amount_usd": 19.99, "status": "success", "attempt": 1, "timestamp": "2026-05-01T00:00:00Z", "descriptor": "SFX BILLING",     "payment_method_type": "card", "card_bin": "424242", "risk_signals": { "cvv_match": true,  "avs_match": "FULL",    "ip_country": "US", "card_country": "US" } },
+      { "transaction_id": "TXN_0013", "subscription_id": "SUB_003", "user_hash": "u_cc33", "amount_usd": 19.99, "status": "success", "attempt": 1, "timestamp": "2026-06-01T00:00:00Z", "descriptor": "SFX BILLING",     "dispute_filed_at": "2026-06-15T00:00:00Z", "dispute_reason": "subscription_not_cancelled", "dispute_status": "open", "payment_method_type": "card", "card_bin": "601100", "risk_signals": { "cvv_match": false, "avs_match": "NONE", "ip_country": "CA", "card_country": "US" } },
+      { "transaction_id": "TXN_0014", "subscription_id": "SUB_001", "user_hash": "u_aa11", "amount_usd": 19.99, "status": "success", "attempt": 1, "timestamp": "2026-07-01T00:00:00Z", "descriptor": "SFX BILLING",     "payment_method_type": "card", "card_bin": "424242", "risk_signals": { "cvv_match": true,  "avs_match": "FULL",    "ip_country": "US", "card_country": "US" } }
+    ],
+    "dispute_events": [
+      { "dispute_id": "DSP_001", "transaction_id": "TXN_0009", "filed_at": "2026-02-10T00:00:00Z", "type": "dispute", "reason": "unrecognized_charge", "status": "open", "customer_explanation": "I do not recognise this name on my statement" },
+      { "dispute_id": "DSP_002", "transaction_id": "TXN_0013", "filed_at": "2026-06-15T00:00:00Z", "type": "dispute", "reason": "subscription_not_cancelled", "status": "open", "customer_explanation": "I asked to cancel twice and was charged again" }
+    ]
+  },
+  {
+    "merchant": {
+      "merchant_id": "MRC_002",
+      "merchant_name": "CloudBackup Inc",
+      "legal_name": "CloudBackup Incorporated",
+      "country": "US",
+      "category_code": "SAAS",
+      "first_seen_at": "2025-09-01T00:00:00Z",
+      "website_url": "https://example-cloudbackup.test",
+      "customer_support_channels": ["email", "chat"]
+    },
+    "subscriptions": [
+      { "subscription_id": "SUB_101", "user_hash": "u_dd44", "billing_interval": "monthly", "trial_days": 14, "start_date": "2025-09-01" },
+      { "subscription_id": "SUB_102", "user_hash": "u_ee55", "billing_interval": "monthly", "trial_days": 14, "start_date": "2025-11-01" }
+    ],
+    "lifecycle_events": [
+      { "subscription_id": "SUB_101", "event_type": "price_change", "timestamp": "2026-03-01T00:00:00Z", "old_amount": 9.0, "new_amount": 11.0, "notification_sent": true, "notification_method": "email", "advance_notice_days": 30 },
+      { "subscription_id": "SUB_102", "event_type": "cancellation_requested", "timestamp": "2026-05-10T00:00:00Z" },
+      { "subscription_id": "SUB_102", "event_type": "cancellation_completed", "timestamp": "2026-05-11T00:00:00Z" }
+    ],
+    "transactions": [
+      { "transaction_id": "TXN_1001", "subscription_id": "SUB_101", "user_hash": "u_dd44", "amount_usd": 9.0,  "status": "success", "attempt": 1, "timestamp": "2025-09-01T00:00:00Z", "descriptor": "CLOUDBACKUP", "payment_method_type": "card", "card_bin": "424242", "risk_signals": { "cvv_match": true, "avs_match": "FULL", "ip_country": "US", "card_country": "US" } },
+      { "transaction_id": "TXN_1002", "subscription_id": "SUB_101", "user_hash": "u_dd44", "amount_usd": 9.0,  "status": "success", "attempt": 1, "timestamp": "2025-11-01T00:00:00Z", "descriptor": "CLOUDBACKUP", "payment_method_type": "card", "card_bin": "424242", "risk_signals": { "cvv_match": true, "avs_match": "FULL", "ip_country": "US", "card_country": "US" } },
+      { "transaction_id": "TXN_1003", "subscription_id": "SUB_102", "user_hash": "u_ee55", "amount_usd": 9.0,  "status": "success", "attempt": 1, "timestamp": "2025-12-01T00:00:00Z", "descriptor": "CLOUDBACKUP", "payment_method_type": "card", "card_bin": "510510", "risk_signals": { "cvv_match": true, "avs_match": "FULL", "ip_country": "US", "card_country": "US" } },
+      { "transaction_id": "TXN_1004", "subscription_id": "SUB_101", "user_hash": "u_dd44", "amount_usd": 9.0,  "status": "failed",  "attempt": 1, "timestamp": "2026-01-01T00:00:00Z", "descriptor": "CLOUDBACKUP", "failure_reason": "expired_card", "payment_method_type": "card", "card_bin": "424242", "risk_signals": { "cvv_match": true, "avs_match": "FULL", "ip_country": "US", "card_country": "US" } },
+      { "transaction_id": "TXN_1005", "subscription_id": "SUB_101", "user_hash": "u_dd44", "amount_usd": 9.0,  "status": "success", "attempt": 2, "timestamp": "2026-01-04T00:00:00Z", "descriptor": "CLOUDBACKUP INC", "payment_method_type": "card", "card_bin": "424242", "risk_signals": { "cvv_match": true, "avs_match": "FULL", "ip_country": "US", "card_country": "US" } },
+      { "transaction_id": "TXN_1006", "subscription_id": "SUB_101", "user_hash": "u_dd44", "amount_usd": 11.0, "status": "success", "attempt": 1, "timestamp": "2026-03-01T00:00:00Z", "descriptor": "CLOUDBACKUP INC", "payment_method_type": "card", "card_bin": "424242", "risk_signals": { "cvv_match": true, "avs_match": "FULL", "ip_country": "US", "card_country": "US" } },
+      { "transaction_id": "TXN_1007", "subscription_id": "SUB_102", "user_hash": "u_ee55", "amount_usd": 11.0, "status": "success", "attempt": 1, "timestamp": "2026-04-01T00:00:00Z", "descriptor": "CLOUDBACKUP INC", "payment_method_type": "card", "card_bin": "510510", "risk_signals": { "cvv_match": true, "avs_match": "FULL", "ip_country": "US", "card_country": "US" } },
+      { "transaction_id": "TXN_1008", "subscription_id": "SUB_101", "user_hash": "u_dd44", "amount_usd": 11.0, "status": "success", "attempt": 1, "timestamp": "2026-06-01T00:00:00Z", "descriptor": "CLOUDBACKUP INC", "payment_method_type": "card", "card_bin": "424242", "risk_signals": { "cvv_match": true, "avs_match": "FULL", "ip_country": "US", "card_country": "US" } }
+    ],
+    "dispute_events": []
+  },
+  {
+    "merchant": {
+      "merchant_id": "MRC_003",
+      "merchant_name": "NewsDaily",
+      "legal_name": "NewsDaily Media Pvt Ltd",
+      "country": "IN",
+      "category_code": "PUBLISHING",
+      "first_seen_at": "2025-08-15T00:00:00Z",
+      "website_url": "https://example-newsdaily.test",
+      "customer_support_channels": ["email", "phone", "chat"]
+    },
+    "subscriptions": [
+      { "subscription_id": "SUB_201", "user_hash": "u_ff66", "billing_interval": "monthly", "trial_days": 0, "start_date": "2025-08-15" },
+      { "subscription_id": "SUB_202", "user_hash": "u_gg77", "billing_interval": "monthly", "trial_days": 0, "start_date": "2025-10-15" }
+    ],
+    "lifecycle_events": [
+      { "subscription_id": "SUB_202", "event_type": "cancellation_requested", "timestamp": "2026-04-15T00:00:00Z" },
+      { "subscription_id": "SUB_202", "event_type": "cancellation_completed", "timestamp": "2026-04-15T00:20:00Z" }
+    ],
+    "transactions": [
+      { "transaction_id": "TXN_2001", "subscription_id": "SUB_201", "user_hash": "u_ff66", "amount_usd": 3.5, "status": "success", "attempt": 1, "timestamp": "2025-08-15T00:00:00Z", "descriptor": "NEWSDAILY", "payment_method_type": "card", "card_bin": "424242", "risk_signals": { "cvv_match": true, "avs_match": "FULL", "ip_country": "IN", "card_country": "IN" } },
+      { "transaction_id": "TXN_2002", "subscription_id": "SUB_201", "user_hash": "u_ff66", "amount_usd": 3.5, "status": "success", "attempt": 1, "timestamp": "2025-10-15T00:00:00Z", "descriptor": "NEWSDAILY", "payment_method_type": "card", "card_bin": "424242", "risk_signals": { "cvv_match": true, "avs_match": "FULL", "ip_country": "IN", "card_country": "IN" } },
+      { "transaction_id": "TXN_2003", "subscription_id": "SUB_202", "user_hash": "u_gg77", "amount_usd": 3.5, "status": "success", "attempt": 1, "timestamp": "2025-12-15T00:00:00Z", "descriptor": "NEWSDAILY", "payment_method_type": "card", "card_bin": "510510", "risk_signals": { "cvv_match": true, "avs_match": "FULL", "ip_country": "IN", "card_country": "IN" } },
+      { "transaction_id": "TXN_2004", "subscription_id": "SUB_201", "user_hash": "u_ff66", "amount_usd": 3.5, "status": "success", "attempt": 1, "timestamp": "2026-02-15T00:00:00Z", "descriptor": "NEWSDAILY", "payment_method_type": "card", "card_bin": "424242", "risk_signals": { "cvv_match": true, "avs_match": "FULL", "ip_country": "IN", "card_country": "IN" } },
+      { "transaction_id": "TXN_2005", "subscription_id": "SUB_202", "user_hash": "u_gg77", "amount_usd": 3.5, "status": "success", "attempt": 1, "timestamp": "2026-04-15T00:00:00Z", "descriptor": "NEWSDAILY", "payment_method_type": "card", "card_bin": "510510", "risk_signals": { "cvv_match": true, "avs_match": "FULL", "ip_country": "IN", "card_country": "IN" } },
+      { "transaction_id": "TXN_2006", "subscription_id": "SUB_201", "user_hash": "u_ff66", "amount_usd": 3.5, "status": "success", "attempt": 1, "timestamp": "2026-06-15T00:00:00Z", "descriptor": "NEWSDAILY", "payment_method_type": "card", "card_bin": "424242", "risk_signals": { "cvv_match": true, "avs_match": "FULL", "ip_country": "IN", "card_country": "IN" } }
+    ],
+    "dispute_events": []
+  }
+]

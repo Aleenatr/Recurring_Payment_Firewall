@@ -1,0 +1,5656 @@
+[
+  {
+    "merchant": {
+      "merchant_id": "MRC_001",
+      "merchant_name": "StreamFlix Pro Ltd.",
+      "legal_name": "StreamFlix Pro Limited",
+      "country": "US",
+      "category_code": "DIGITAL_MEDIA",
+      "first_seen_at": "2025-08-01T00:00:00Z",
+      "website_url": "https://example-streamflix.test",
+      "customer_support_channels": [
+        "email"
+      ]
+    },
+    "subscriptions": [
+      {
+        "subscription_id": "SUB_001",
+        "user_hash": "u_aa11",
+        "billing_interval": "monthly",
+        "trial_days": 7,
+        "start_date": "2025-08-01"
+      },
+      {
+        "subscription_id": "SUB_002",
+        "user_hash": "u_bb22",
+        "billing_interval": "monthly",
+        "trial_days": 7,
+        "start_date": "2025-09-01"
+      },
+      {
+        "subscription_id": "SUB_003",
+        "user_hash": "u_cc33",
+        "billing_interval": "monthly",
+        "trial_days": 0,
+        "start_date": "2025-10-01"
+      }
+    ],
+    "lifecycle_events": [
+      {
+        "subscription_id": "SUB_001",
+        "event_type": "price_change",
+        "timestamp": "2025-11-01T00:00:00Z",
+        "old_amount": 4.99,
+        "new_amount": 7.99,
+        "notification_sent": false
+      },
+      {
+        "subscription_id": "SUB_001",
+        "event_type": "price_change",
+        "timestamp": "2026-02-01T00:00:00Z",
+        "old_amount": 7.99,
+        "new_amount": 12.99,
+        "notification_sent": false
+      },
+      {
+        "subscription_id": "SUB_001",
+        "event_type": "price_change",
+        "timestamp": "2026-05-01T00:00:00Z",
+        "old_amount": 12.99,
+        "new_amount": 19.99,
+        "notification_sent": false
+      },
+      {
+        "subscription_id": "SUB_002",
+        "event_type": "cancellation_requested",
+        "timestamp": "2026-03-14T10:00:00Z"
+      },
+      {
+        "subscription_id": "SUB_003",
+        "event_type": "cancellation_requested",
+        "timestamp": "2026-06-02T09:00:00Z"
+      },
+      {
+        "subscription_id": "SUB_003",
+        "event_type": "cancellation_requested",
+        "timestamp": "2026-07-11T09:00:00Z"
+      }
+    ],
+    "transactions": [
+      {
+        "transaction_id": "TXN_0001",
+        "subscription_id": "SUB_001",
+        "user_hash": "u_aa11",
+        "amount_usd": 4.99,
+        "status": "success",
+        "attempt": 1,
+        "timestamp": "2025-08-01T00:00:00Z",
+        "descriptor": "SFLIX*PRO",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      },
+      {
+        "transaction_id": "TXN_0002",
+        "subscription_id": "SUB_001",
+        "user_hash": "u_aa11",
+        "amount_usd": 4.99,
+        "status": "success",
+        "attempt": 1,
+        "timestamp": "2025-09-01T00:00:00Z",
+        "descriptor": "SFLIX*PRO",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      },
+      {
+        "transaction_id": "TXN_0003",
+        "subscription_id": "SUB_002",
+        "user_hash": "u_bb22",
+        "amount_usd": 4.99,
+        "status": "success",
+        "attempt": 1,
+        "timestamp": "2025-10-01T00:00:00Z",
+        "descriptor": "STREAMFLIX PRO",
+        "payment_method_type": "card",
+        "card_bin": "510510",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "PARTIAL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      },
+      {
+        "transaction_id": "TXN_0004",
+        "subscription_id": "SUB_001",
+        "user_hash": "u_aa11",
+        "amount_usd": 7.99,
+        "status": "success",
+        "attempt": 1,
+        "timestamp": "2025-11-01T00:00:00Z",
+        "descriptor": "SF*PREMIUM",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      },
+      {
+        "transaction_id": "TXN_0005",
+        "subscription_id": "SUB_002",
+        "user_hash": "u_bb22",
+        "amount_usd": 7.99,
+        "status": "failed",
+        "attempt": 1,
+        "timestamp": "2025-12-01T00:00:00Z",
+        "descriptor": "SF*PREMIUM",
+        "failure_reason": "insufficient_funds",
+        "payment_method_type": "card",
+        "card_bin": "510510",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "PARTIAL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      },
+      {
+        "transaction_id": "TXN_0006",
+        "subscription_id": "SUB_002",
+        "user_hash": "u_bb22",
+        "amount_usd": 7.99,
+        "status": "failed",
+        "attempt": 2,
+        "timestamp": "2025-12-01T06:00:00Z",
+        "descriptor": "SF*PREMIUM",
+        "failure_reason": "insufficient_funds",
+        "payment_method_type": "card",
+        "card_bin": "510510",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "PARTIAL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      },
+      {
+        "transaction_id": "TXN_0007",
+        "subscription_id": "SUB_002",
+        "user_hash": "u_bb22",
+        "amount_usd": 7.99,
+        "status": "failed",
+        "attempt": 3,
+        "timestamp": "2025-12-01T14:00:00Z",
+        "descriptor": "STRMFLX",
+        "failure_reason": "insufficient_funds",
+        "payment_method_type": "card",
+        "card_bin": "510510",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "PARTIAL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      },
+      {
+        "transaction_id": "TXN_0008",
+        "subscription_id": "SUB_002",
+        "user_hash": "u_bb22",
+        "amount_usd": 7.99,
+        "status": "success",
+        "attempt": 4,
+        "timestamp": "2025-12-01T22:00:00Z",
+        "descriptor": "STRMFLX",
+        "payment_method_type": "card",
+        "card_bin": "510510",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "PARTIAL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      },
+      {
+        "transaction_id": "TXN_0009",
+        "subscription_id": "SUB_003",
+        "user_hash": "u_cc33",
+        "amount_usd": 12.99,
+        "status": "success",
+        "attempt": 1,
+        "timestamp": "2026-02-01T00:00:00Z",
+        "descriptor": "STRMFLX",
+        "dispute_filed_at": "2026-02-10T00:00:00Z",
+        "dispute_reason": "unrecognized_charge",
+        "dispute_status": "open",
+        "payment_method_type": "card",
+        "card_bin": "601100",
+        "risk_signals": {
+          "cvv_match": false,
+          "avs_match": "NONE",
+          "ip_country": "CA",
+          "card_country": "US"
+        }
+      },
+      {
+        "transaction_id": "TXN_0010",
+        "subscription_id": "SUB_001",
+        "user_hash": "u_aa11",
+        "amount_usd": 12.99,
+        "status": "success",
+        "attempt": 1,
+        "timestamp": "2026-03-01T00:00:00Z",
+        "descriptor": "SFX BILLING",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      },
+      {
+        "transaction_id": "TXN_0011",
+        "subscription_id": "SUB_003",
+        "user_hash": "u_cc33",
+        "amount_usd": 12.99,
+        "status": "success",
+        "attempt": 1,
+        "timestamp": "2026-04-01T00:00:00Z",
+        "descriptor": "SFX BILLING",
+        "chargeback_filed_at": "2026-04-20T00:00:00Z",
+        "chargeback_reason": "fraud",
+        "chargeback_status": "lost",
+        "payment_method_type": "card",
+        "card_bin": "601100",
+        "risk_signals": {
+          "cvv_match": false,
+          "avs_match": "NONE",
+          "ip_country": "CA",
+          "card_country": "US"
+        }
+      },
+      {
+        "transaction_id": "TXN_0012",
+        "subscription_id": "SUB_001",
+        "user_hash": "u_aa11",
+        "amount_usd": 19.99,
+        "status": "success",
+        "attempt": 1,
+        "timestamp": "2026-05-01T00:00:00Z",
+        "descriptor": "SFX BILLING",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      },
+      {
+        "transaction_id": "TXN_0013",
+        "subscription_id": "SUB_003",
+        "user_hash": "u_cc33",
+        "amount_usd": 19.99,
+        "status": "success",
+        "attempt": 1,
+        "timestamp": "2026-06-01T00:00:00Z",
+        "descriptor": "SFX BILLING",
+        "dispute_filed_at": "2026-06-15T00:00:00Z",
+        "dispute_reason": "subscription_not_cancelled",
+        "dispute_status": "open",
+        "payment_method_type": "card",
+        "card_bin": "601100",
+        "risk_signals": {
+          "cvv_match": false,
+          "avs_match": "NONE",
+          "ip_country": "CA",
+          "card_country": "US"
+        }
+      },
+      {
+        "transaction_id": "TXN_0014",
+        "subscription_id": "SUB_001",
+        "user_hash": "u_aa11",
+        "amount_usd": 19.99,
+        "status": "success",
+        "attempt": 1,
+        "timestamp": "2026-07-01T00:00:00Z",
+        "descriptor": "SFX BILLING",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      }
+    ],
+    "dispute_events": [
+      {
+        "dispute_id": "DSP_001",
+        "transaction_id": "TXN_0009",
+        "filed_at": "2026-02-10T00:00:00Z",
+        "type": "dispute",
+        "reason": "unrecognized_charge",
+        "status": "open",
+        "customer_explanation": "I do not recognise this name on my statement"
+      },
+      {
+        "dispute_id": "DSP_002",
+        "transaction_id": "TXN_0013",
+        "filed_at": "2026-06-15T00:00:00Z",
+        "type": "dispute",
+        "reason": "subscription_not_cancelled",
+        "status": "open",
+        "customer_explanation": "I asked to cancel twice and was charged again"
+      }
+    ]
+  },
+  {
+    "merchant": {
+      "merchant_id": "MRC_002",
+      "merchant_name": "CloudBackup Inc",
+      "legal_name": "CloudBackup Incorporated",
+      "country": "US",
+      "category_code": "SAAS",
+      "first_seen_at": "2025-09-01T00:00:00Z",
+      "website_url": "https://example-cloudbackup.test",
+      "customer_support_channels": [
+        "email",
+        "chat"
+      ]
+    },
+    "subscriptions": [
+      {
+        "subscription_id": "SUB_101",
+        "user_hash": "u_dd44",
+        "billing_interval": "monthly",
+        "trial_days": 14,
+        "start_date": "2025-09-01"
+      },
+      {
+        "subscription_id": "SUB_102",
+        "user_hash": "u_ee55",
+        "billing_interval": "monthly",
+        "trial_days": 14,
+        "start_date": "2025-11-01"
+      }
+    ],
+    "lifecycle_events": [
+      {
+        "subscription_id": "SUB_101",
+        "event_type": "price_change",
+        "timestamp": "2026-03-01T00:00:00Z",
+        "old_amount": 9,
+        "new_amount": 11,
+        "notification_sent": true,
+        "notification_method": "email",
+        "advance_notice_days": 30
+      },
+      {
+        "subscription_id": "SUB_102",
+        "event_type": "cancellation_requested",
+        "timestamp": "2026-05-10T00:00:00Z"
+      },
+      {
+        "subscription_id": "SUB_102",
+        "event_type": "cancellation_completed",
+        "timestamp": "2026-05-11T00:00:00Z"
+      }
+    ],
+    "transactions": [
+      {
+        "transaction_id": "TXN_1001",
+        "subscription_id": "SUB_101",
+        "user_hash": "u_dd44",
+        "amount_usd": 9,
+        "status": "success",
+        "attempt": 1,
+        "timestamp": "2025-09-01T00:00:00Z",
+        "descriptor": "CLOUDBACKUP",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      },
+      {
+        "transaction_id": "TXN_1002",
+        "subscription_id": "SUB_101",
+        "user_hash": "u_dd44",
+        "amount_usd": 9,
+        "status": "success",
+        "attempt": 1,
+        "timestamp": "2025-11-01T00:00:00Z",
+        "descriptor": "CLOUDBACKUP",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      },
+      {
+        "transaction_id": "TXN_1003",
+        "subscription_id": "SUB_102",
+        "user_hash": "u_ee55",
+        "amount_usd": 9,
+        "status": "success",
+        "attempt": 1,
+        "timestamp": "2025-12-01T00:00:00Z",
+        "descriptor": "CLOUDBACKUP",
+        "payment_method_type": "card",
+        "card_bin": "510510",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      },
+      {
+        "transaction_id": "TXN_1004",
+        "subscription_id": "SUB_101",
+        "user_hash": "u_dd44",
+        "amount_usd": 9,
+        "status": "failed",
+        "attempt": 1,
+        "timestamp": "2026-01-01T00:00:00Z",
+        "descriptor": "CLOUDBACKUP",
+        "failure_reason": "expired_card",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      },
+      {
+        "transaction_id": "TXN_1005",
+        "subscription_id": "SUB_101",
+        "user_hash": "u_dd44",
+        "amount_usd": 9,
+        "status": "success",
+        "attempt": 2,
+        "timestamp": "2026-01-04T00:00:00Z",
+        "descriptor": "CLOUDBACKUP INC",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      },
+      {
+        "transaction_id": "TXN_1006",
+        "subscription_id": "SUB_101",
+        "user_hash": "u_dd44",
+        "amount_usd": 11,
+        "status": "success",
+        "attempt": 1,
+        "timestamp": "2026-03-01T00:00:00Z",
+        "descriptor": "CLOUDBACKUP INC",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      },
+      {
+        "transaction_id": "TXN_1007",
+        "subscription_id": "SUB_102",
+        "user_hash": "u_ee55",
+        "amount_usd": 11,
+        "status": "success",
+        "attempt": 1,
+        "timestamp": "2026-04-01T00:00:00Z",
+        "descriptor": "CLOUDBACKUP INC",
+        "payment_method_type": "card",
+        "card_bin": "510510",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      },
+      {
+        "transaction_id": "TXN_1008",
+        "subscription_id": "SUB_101",
+        "user_hash": "u_dd44",
+        "amount_usd": 11,
+        "status": "success",
+        "attempt": 1,
+        "timestamp": "2026-06-01T00:00:00Z",
+        "descriptor": "CLOUDBACKUP INC",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      }
+    ],
+    "dispute_events": []
+  },
+  {
+    "merchant": {
+      "merchant_id": "MRC_003",
+      "merchant_name": "NewsDaily",
+      "legal_name": "NewsDaily Media Pvt Ltd",
+      "country": "IN",
+      "category_code": "PUBLISHING",
+      "first_seen_at": "2025-08-15T00:00:00Z",
+      "website_url": "https://example-newsdaily.test",
+      "customer_support_channels": [
+        "email",
+        "phone",
+        "chat"
+      ]
+    },
+    "subscriptions": [
+      {
+        "subscription_id": "SUB_201",
+        "user_hash": "u_ff66",
+        "billing_interval": "monthly",
+        "trial_days": 0,
+        "start_date": "2025-08-15"
+      },
+      {
+        "subscription_id": "SUB_202",
+        "user_hash": "u_gg77",
+        "billing_interval": "monthly",
+        "trial_days": 0,
+        "start_date": "2025-10-15"
+      }
+    ],
+    "lifecycle_events": [
+      {
+        "subscription_id": "SUB_202",
+        "event_type": "cancellation_requested",
+        "timestamp": "2026-04-15T00:00:00Z"
+      },
+      {
+        "subscription_id": "SUB_202",
+        "event_type": "cancellation_completed",
+        "timestamp": "2026-04-15T00:20:00Z"
+      }
+    ],
+    "transactions": [
+      {
+        "transaction_id": "TXN_2001",
+        "subscription_id": "SUB_201",
+        "user_hash": "u_ff66",
+        "amount_usd": 3.5,
+        "status": "success",
+        "attempt": 1,
+        "timestamp": "2025-08-15T00:00:00Z",
+        "descriptor": "NEWSDAILY",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "IN",
+          "card_country": "IN"
+        }
+      },
+      {
+        "transaction_id": "TXN_2002",
+        "subscription_id": "SUB_201",
+        "user_hash": "u_ff66",
+        "amount_usd": 3.5,
+        "status": "success",
+        "attempt": 1,
+        "timestamp": "2025-10-15T00:00:00Z",
+        "descriptor": "NEWSDAILY",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "IN",
+          "card_country": "IN"
+        }
+      },
+      {
+        "transaction_id": "TXN_2003",
+        "subscription_id": "SUB_202",
+        "user_hash": "u_gg77",
+        "amount_usd": 3.5,
+        "status": "success",
+        "attempt": 1,
+        "timestamp": "2025-12-15T00:00:00Z",
+        "descriptor": "NEWSDAILY",
+        "payment_method_type": "card",
+        "card_bin": "510510",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "IN",
+          "card_country": "IN"
+        }
+      },
+      {
+        "transaction_id": "TXN_2004",
+        "subscription_id": "SUB_201",
+        "user_hash": "u_ff66",
+        "amount_usd": 3.5,
+        "status": "success",
+        "attempt": 1,
+        "timestamp": "2026-02-15T00:00:00Z",
+        "descriptor": "NEWSDAILY",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "IN",
+          "card_country": "IN"
+        }
+      },
+      {
+        "transaction_id": "TXN_2005",
+        "subscription_id": "SUB_202",
+        "user_hash": "u_gg77",
+        "amount_usd": 3.5,
+        "status": "success",
+        "attempt": 1,
+        "timestamp": "2026-04-15T00:00:00Z",
+        "descriptor": "NEWSDAILY",
+        "payment_method_type": "card",
+        "card_bin": "510510",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "IN",
+          "card_country": "IN"
+        }
+      },
+      {
+        "transaction_id": "TXN_2006",
+        "subscription_id": "SUB_201",
+        "user_hash": "u_ff66",
+        "amount_usd": 3.5,
+        "status": "success",
+        "attempt": 1,
+        "timestamp": "2026-06-15T00:00:00Z",
+        "descriptor": "NEWSDAILY",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "IN",
+          "card_country": "IN"
+        }
+      }
+    ],
+    "dispute_events": []
+  },
+  {
+    "merchant": {
+      "merchant_id": "MRC_100",
+      "merchant_name": "PixelVault",
+      "legal_name": "PixelVault Limited",
+      "country": "IN",
+      "category_code": "SAAS",
+      "first_seen_at": "2025-09-01T00:00:00.000Z",
+      "website_url": "https://example-pixelvault.test",
+      "customer_support_channels": [
+        "email",
+        "chat"
+      ]
+    },
+    "subscriptions": [
+      {
+        "subscription_id": "MRC_100_SUB_0",
+        "user_hash": "u_mrc_100_0",
+        "billing_interval": "monthly",
+        "trial_days": 7,
+        "start_date": "2025-09-01"
+      },
+      {
+        "subscription_id": "MRC_100_SUB_1",
+        "user_hash": "u_mrc_100_1",
+        "billing_interval": "monthly",
+        "trial_days": 14,
+        "start_date": "2025-09-01"
+      },
+      {
+        "subscription_id": "MRC_100_SUB_2",
+        "user_hash": "u_mrc_100_2",
+        "billing_interval": "monthly",
+        "trial_days": 14,
+        "start_date": "2025-09-01"
+      }
+    ],
+    "lifecycle_events": [
+      {
+        "subscription_id": "MRC_100_SUB_1",
+        "event_type": "cancellation_requested",
+        "timestamp": "2026-06-01T00:00:00.000Z"
+      },
+      {
+        "subscription_id": "MRC_100_SUB_1",
+        "event_type": "cancellation_completed",
+        "timestamp": "2026-06-01T00:00:00.000Z"
+      }
+    ],
+    "transactions": [
+      {
+        "transaction_id": "MRC_100_TXN_0_11",
+        "subscription_id": "MRC_100_SUB_0",
+        "user_hash": "u_mrc_100_0",
+        "amount_usd": 11.51,
+        "status": "success",
+        "attempt": 1,
+        "timestamp": "2025-09-01T00:00:00.000Z",
+        "descriptor": "PIXELVAULT",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      },
+      {
+        "transaction_id": "MRC_100_TXN_0_9",
+        "subscription_id": "MRC_100_SUB_0",
+        "user_hash": "u_mrc_100_0",
+        "amount_usd": 11.51,
+        "status": "success",
+        "attempt": 1,
+        "timestamp": "2025-11-01T00:00:00.000Z",
+        "descriptor": "PIXELVAULT",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      },
+      {
+        "transaction_id": "MRC_100_TXN_0_7",
+        "subscription_id": "MRC_100_SUB_0",
+        "user_hash": "u_mrc_100_0",
+        "amount_usd": 11.51,
+        "status": "success",
+        "attempt": 1,
+        "timestamp": "2026-01-01T00:00:00.000Z",
+        "descriptor": "PIXELVAULT",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      },
+      {
+        "transaction_id": "MRC_100_TXN_0_5",
+        "subscription_id": "MRC_100_SUB_0",
+        "user_hash": "u_mrc_100_0",
+        "amount_usd": 11.51,
+        "status": "success",
+        "attempt": 1,
+        "timestamp": "2026-03-01T00:00:00.000Z",
+        "descriptor": "PIXELVAULT",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      },
+      {
+        "transaction_id": "MRC_100_TXN_0_3",
+        "subscription_id": "MRC_100_SUB_0",
+        "user_hash": "u_mrc_100_0",
+        "amount_usd": 11.51,
+        "status": "success",
+        "attempt": 1,
+        "timestamp": "2026-05-01T00:00:00.000Z",
+        "descriptor": "PIXELVAULT",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      },
+      {
+        "transaction_id": "MRC_100_TXN_0_1",
+        "subscription_id": "MRC_100_SUB_0",
+        "user_hash": "u_mrc_100_0",
+        "amount_usd": 11.51,
+        "status": "success",
+        "attempt": 1,
+        "timestamp": "2026-07-01T00:00:00.000Z",
+        "descriptor": "PIXELVAULT",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      },
+      {
+        "transaction_id": "MRC_100_TXN_1_11_F",
+        "subscription_id": "MRC_100_SUB_1",
+        "user_hash": "u_mrc_100_1",
+        "amount_usd": 11.51,
+        "status": "failed",
+        "attempt": 1,
+        "timestamp": "2025-09-01T00:00:00.000Z",
+        "descriptor": "PIXELVAULT",
+        "failure_reason": "insufficient_funds",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      },
+      {
+        "transaction_id": "MRC_100_TXN_1_11_R0",
+        "subscription_id": "MRC_100_SUB_1",
+        "user_hash": "u_mrc_100_1",
+        "amount_usd": 11.51,
+        "status": "success",
+        "attempt": 2,
+        "timestamp": "2025-09-04T00:00:00.000Z",
+        "descriptor": "PIXELVAULT",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      },
+      {
+        "transaction_id": "MRC_100_TXN_1_9",
+        "subscription_id": "MRC_100_SUB_1",
+        "user_hash": "u_mrc_100_1",
+        "amount_usd": 11.51,
+        "status": "success",
+        "attempt": 1,
+        "timestamp": "2025-11-01T00:00:00.000Z",
+        "descriptor": "PIXELVAULT",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      },
+      {
+        "transaction_id": "MRC_100_TXN_1_7",
+        "subscription_id": "MRC_100_SUB_1",
+        "user_hash": "u_mrc_100_1",
+        "amount_usd": 11.51,
+        "status": "success",
+        "attempt": 1,
+        "timestamp": "2026-01-01T00:00:00.000Z",
+        "descriptor": "PIXELVAULT",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      },
+      {
+        "transaction_id": "MRC_100_TXN_1_5",
+        "subscription_id": "MRC_100_SUB_1",
+        "user_hash": "u_mrc_100_1",
+        "amount_usd": 11.51,
+        "status": "success",
+        "attempt": 1,
+        "timestamp": "2026-03-01T00:00:00.000Z",
+        "descriptor": "PIXELVAULT",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      },
+      {
+        "transaction_id": "MRC_100_TXN_1_3",
+        "subscription_id": "MRC_100_SUB_1",
+        "user_hash": "u_mrc_100_1",
+        "amount_usd": 11.51,
+        "status": "success",
+        "attempt": 1,
+        "timestamp": "2026-05-01T00:00:00.000Z",
+        "descriptor": "PIXELVAULT",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      },
+      {
+        "transaction_id": "MRC_100_TXN_1_1",
+        "subscription_id": "MRC_100_SUB_1",
+        "user_hash": "u_mrc_100_1",
+        "amount_usd": 11.51,
+        "status": "success",
+        "attempt": 1,
+        "timestamp": "2026-07-01T00:00:00.000Z",
+        "descriptor": "PIXELVAULT",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      },
+      {
+        "transaction_id": "MRC_100_TXN_2_11",
+        "subscription_id": "MRC_100_SUB_2",
+        "user_hash": "u_mrc_100_2",
+        "amount_usd": 11.51,
+        "status": "success",
+        "attempt": 1,
+        "timestamp": "2025-09-01T00:00:00.000Z",
+        "descriptor": "PIXELVAULT",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      },
+      {
+        "transaction_id": "MRC_100_TXN_2_9",
+        "subscription_id": "MRC_100_SUB_2",
+        "user_hash": "u_mrc_100_2",
+        "amount_usd": 11.51,
+        "status": "success",
+        "attempt": 1,
+        "timestamp": "2025-11-01T00:00:00.000Z",
+        "descriptor": "PIXELVAULT",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      },
+      {
+        "transaction_id": "MRC_100_TXN_2_7_F",
+        "subscription_id": "MRC_100_SUB_2",
+        "user_hash": "u_mrc_100_2",
+        "amount_usd": 11.51,
+        "status": "failed",
+        "attempt": 1,
+        "timestamp": "2026-01-01T00:00:00.000Z",
+        "descriptor": "PIXELVAULT",
+        "failure_reason": "insufficient_funds",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      },
+      {
+        "transaction_id": "MRC_100_TXN_2_7_R0",
+        "subscription_id": "MRC_100_SUB_2",
+        "user_hash": "u_mrc_100_2",
+        "amount_usd": 11.51,
+        "status": "success",
+        "attempt": 2,
+        "timestamp": "2026-01-04T00:00:00.000Z",
+        "descriptor": "PIXELVAULT",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      },
+      {
+        "transaction_id": "MRC_100_TXN_2_5_F",
+        "subscription_id": "MRC_100_SUB_2",
+        "user_hash": "u_mrc_100_2",
+        "amount_usd": 11.51,
+        "status": "failed",
+        "attempt": 1,
+        "timestamp": "2026-03-01T00:00:00.000Z",
+        "descriptor": "PIXELVAULT",
+        "failure_reason": "insufficient_funds",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      },
+      {
+        "transaction_id": "MRC_100_TXN_2_5_R0",
+        "subscription_id": "MRC_100_SUB_2",
+        "user_hash": "u_mrc_100_2",
+        "amount_usd": 11.51,
+        "status": "success",
+        "attempt": 2,
+        "timestamp": "2026-03-04T00:00:00.000Z",
+        "descriptor": "PIXELVAULT",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      },
+      {
+        "transaction_id": "MRC_100_TXN_2_3",
+        "subscription_id": "MRC_100_SUB_2",
+        "user_hash": "u_mrc_100_2",
+        "amount_usd": 11.51,
+        "status": "success",
+        "attempt": 1,
+        "timestamp": "2026-05-01T00:00:00.000Z",
+        "descriptor": "PIXELVAULT",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      },
+      {
+        "transaction_id": "MRC_100_TXN_2_1_F",
+        "subscription_id": "MRC_100_SUB_2",
+        "user_hash": "u_mrc_100_2",
+        "amount_usd": 11.51,
+        "status": "failed",
+        "attempt": 1,
+        "timestamp": "2026-07-01T00:00:00.000Z",
+        "descriptor": "PIXELVAULT",
+        "failure_reason": "insufficient_funds",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      },
+      {
+        "transaction_id": "MRC_100_TXN_2_1_R0",
+        "subscription_id": "MRC_100_SUB_2",
+        "user_hash": "u_mrc_100_2",
+        "amount_usd": 11.51,
+        "status": "success",
+        "attempt": 2,
+        "timestamp": "2026-07-04T00:00:00.000Z",
+        "descriptor": "PIXELVAULT",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      }
+    ],
+    "dispute_events": []
+  },
+  {
+    "merchant": {
+      "merchant_id": "MRC_101",
+      "merchant_name": "MealBox",
+      "legal_name": "MealBox Limited",
+      "country": "GB",
+      "category_code": "SAAS",
+      "first_seen_at": "2025-09-01T00:00:00.000Z",
+      "website_url": "https://example-mealbox.test",
+      "customer_support_channels": [
+        "email",
+        "chat"
+      ]
+    },
+    "subscriptions": [
+      {
+        "subscription_id": "MRC_101_SUB_0",
+        "user_hash": "u_mrc_101_0",
+        "billing_interval": "monthly",
+        "trial_days": 14,
+        "start_date": "2025-09-01"
+      },
+      {
+        "subscription_id": "MRC_101_SUB_1",
+        "user_hash": "u_mrc_101_1",
+        "billing_interval": "monthly",
+        "trial_days": 14,
+        "start_date": "2025-09-01"
+      },
+      {
+        "subscription_id": "MRC_101_SUB_2",
+        "user_hash": "u_mrc_101_2",
+        "billing_interval": "monthly",
+        "trial_days": 14,
+        "start_date": "2025-09-01"
+      },
+      {
+        "subscription_id": "MRC_101_SUB_3",
+        "user_hash": "u_mrc_101_3",
+        "billing_interval": "monthly",
+        "trial_days": 14,
+        "start_date": "2025-09-01"
+      }
+    ],
+    "lifecycle_events": [
+      {
+        "subscription_id": "MRC_101_SUB_1",
+        "event_type": "cancellation_requested",
+        "timestamp": "2026-06-01T00:00:00.000Z"
+      },
+      {
+        "subscription_id": "MRC_101_SUB_1",
+        "event_type": "cancellation_completed",
+        "timestamp": "2026-06-01T00:00:00.000Z"
+      }
+    ],
+    "transactions": [
+      {
+        "transaction_id": "MRC_101_TXN_0_11",
+        "subscription_id": "MRC_101_SUB_0",
+        "user_hash": "u_mrc_101_0",
+        "amount_usd": 3.16,
+        "status": "success",
+        "attempt": 1,
+        "timestamp": "2025-09-01T00:00:00.000Z",
+        "descriptor": "MEALBOX",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      },
+      {
+        "transaction_id": "MRC_101_TXN_0_9_F",
+        "subscription_id": "MRC_101_SUB_0",
+        "user_hash": "u_mrc_101_0",
+        "amount_usd": 3.16,
+        "status": "failed",
+        "attempt": 1,
+        "timestamp": "2025-11-01T00:00:00.000Z",
+        "descriptor": "MEALBOX",
+        "failure_reason": "insufficient_funds",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      },
+      {
+        "transaction_id": "MRC_101_TXN_0_9_R0",
+        "subscription_id": "MRC_101_SUB_0",
+        "user_hash": "u_mrc_101_0",
+        "amount_usd": 3.16,
+        "status": "success",
+        "attempt": 2,
+        "timestamp": "2025-11-04T00:00:00.000Z",
+        "descriptor": "MEALBOX",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      },
+      {
+        "transaction_id": "MRC_101_TXN_0_7",
+        "subscription_id": "MRC_101_SUB_0",
+        "user_hash": "u_mrc_101_0",
+        "amount_usd": 3.16,
+        "status": "success",
+        "attempt": 1,
+        "timestamp": "2026-01-01T00:00:00.000Z",
+        "descriptor": "MEALBOX",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      },
+      {
+        "transaction_id": "MRC_101_TXN_0_5",
+        "subscription_id": "MRC_101_SUB_0",
+        "user_hash": "u_mrc_101_0",
+        "amount_usd": 3.16,
+        "status": "success",
+        "attempt": 1,
+        "timestamp": "2026-03-01T00:00:00.000Z",
+        "descriptor": "MEALBOX",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      },
+      {
+        "transaction_id": "MRC_101_TXN_0_3",
+        "subscription_id": "MRC_101_SUB_0",
+        "user_hash": "u_mrc_101_0",
+        "amount_usd": 3.16,
+        "status": "success",
+        "attempt": 1,
+        "timestamp": "2026-05-01T00:00:00.000Z",
+        "descriptor": "MEALBOX",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      },
+      {
+        "transaction_id": "MRC_101_TXN_0_1",
+        "subscription_id": "MRC_101_SUB_0",
+        "user_hash": "u_mrc_101_0",
+        "amount_usd": 3.16,
+        "status": "success",
+        "attempt": 1,
+        "timestamp": "2026-07-01T00:00:00.000Z",
+        "descriptor": "MEALBOX",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      },
+      {
+        "transaction_id": "MRC_101_TXN_1_11",
+        "subscription_id": "MRC_101_SUB_1",
+        "user_hash": "u_mrc_101_1",
+        "amount_usd": 3.16,
+        "status": "success",
+        "attempt": 1,
+        "timestamp": "2025-09-01T00:00:00.000Z",
+        "descriptor": "MEALBOX",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      },
+      {
+        "transaction_id": "MRC_101_TXN_1_9",
+        "subscription_id": "MRC_101_SUB_1",
+        "user_hash": "u_mrc_101_1",
+        "amount_usd": 3.16,
+        "status": "success",
+        "attempt": 1,
+        "timestamp": "2025-11-01T00:00:00.000Z",
+        "descriptor": "MEALBOX",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      },
+      {
+        "transaction_id": "MRC_101_TXN_1_7",
+        "subscription_id": "MRC_101_SUB_1",
+        "user_hash": "u_mrc_101_1",
+        "amount_usd": 3.16,
+        "status": "success",
+        "attempt": 1,
+        "timestamp": "2026-01-01T00:00:00.000Z",
+        "descriptor": "MEALBOX",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      },
+      {
+        "transaction_id": "MRC_101_TXN_1_5",
+        "subscription_id": "MRC_101_SUB_1",
+        "user_hash": "u_mrc_101_1",
+        "amount_usd": 3.16,
+        "status": "success",
+        "attempt": 1,
+        "timestamp": "2026-03-01T00:00:00.000Z",
+        "descriptor": "MEALBOX",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      },
+      {
+        "transaction_id": "MRC_101_TXN_1_3",
+        "subscription_id": "MRC_101_SUB_1",
+        "user_hash": "u_mrc_101_1",
+        "amount_usd": 3.16,
+        "status": "success",
+        "attempt": 1,
+        "timestamp": "2026-05-01T00:00:00.000Z",
+        "descriptor": "MEALBOX",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      },
+      {
+        "transaction_id": "MRC_101_TXN_1_1",
+        "subscription_id": "MRC_101_SUB_1",
+        "user_hash": "u_mrc_101_1",
+        "amount_usd": 3.16,
+        "status": "success",
+        "attempt": 1,
+        "timestamp": "2026-07-01T00:00:00.000Z",
+        "descriptor": "MEALBOX",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      },
+      {
+        "transaction_id": "MRC_101_TXN_2_11_F",
+        "subscription_id": "MRC_101_SUB_2",
+        "user_hash": "u_mrc_101_2",
+        "amount_usd": 3.16,
+        "status": "failed",
+        "attempt": 1,
+        "timestamp": "2025-09-01T00:00:00.000Z",
+        "descriptor": "MEALBOX",
+        "failure_reason": "insufficient_funds",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      },
+      {
+        "transaction_id": "MRC_101_TXN_2_11_R0",
+        "subscription_id": "MRC_101_SUB_2",
+        "user_hash": "u_mrc_101_2",
+        "amount_usd": 3.16,
+        "status": "success",
+        "attempt": 2,
+        "timestamp": "2025-09-04T00:00:00.000Z",
+        "descriptor": "MEALBOX",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      },
+      {
+        "transaction_id": "MRC_101_TXN_2_9",
+        "subscription_id": "MRC_101_SUB_2",
+        "user_hash": "u_mrc_101_2",
+        "amount_usd": 3.16,
+        "status": "success",
+        "attempt": 1,
+        "timestamp": "2025-11-01T00:00:00.000Z",
+        "descriptor": "MEALBOX",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      },
+      {
+        "transaction_id": "MRC_101_TXN_2_7",
+        "subscription_id": "MRC_101_SUB_2",
+        "user_hash": "u_mrc_101_2",
+        "amount_usd": 3.16,
+        "status": "success",
+        "attempt": 1,
+        "timestamp": "2026-01-01T00:00:00.000Z",
+        "descriptor": "MEALBOX",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      },
+      {
+        "transaction_id": "MRC_101_TXN_2_5",
+        "subscription_id": "MRC_101_SUB_2",
+        "user_hash": "u_mrc_101_2",
+        "amount_usd": 3.16,
+        "status": "success",
+        "attempt": 1,
+        "timestamp": "2026-03-01T00:00:00.000Z",
+        "descriptor": "MEALBOX",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      },
+      {
+        "transaction_id": "MRC_101_TXN_2_3",
+        "subscription_id": "MRC_101_SUB_2",
+        "user_hash": "u_mrc_101_2",
+        "amount_usd": 3.16,
+        "status": "success",
+        "attempt": 1,
+        "timestamp": "2026-05-01T00:00:00.000Z",
+        "descriptor": "MEALBOX",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      },
+      {
+        "transaction_id": "MRC_101_TXN_2_1",
+        "subscription_id": "MRC_101_SUB_2",
+        "user_hash": "u_mrc_101_2",
+        "amount_usd": 3.16,
+        "status": "success",
+        "attempt": 1,
+        "timestamp": "2026-07-01T00:00:00.000Z",
+        "descriptor": "MEALBOX",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      },
+      {
+        "transaction_id": "MRC_101_TXN_3_11",
+        "subscription_id": "MRC_101_SUB_3",
+        "user_hash": "u_mrc_101_3",
+        "amount_usd": 3.16,
+        "status": "success",
+        "attempt": 1,
+        "timestamp": "2025-09-01T00:00:00.000Z",
+        "descriptor": "MEALBOX",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      },
+      {
+        "transaction_id": "MRC_101_TXN_3_9",
+        "subscription_id": "MRC_101_SUB_3",
+        "user_hash": "u_mrc_101_3",
+        "amount_usd": 3.16,
+        "status": "success",
+        "attempt": 1,
+        "timestamp": "2025-11-01T00:00:00.000Z",
+        "descriptor": "MEALBOX",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      },
+      {
+        "transaction_id": "MRC_101_TXN_3_7",
+        "subscription_id": "MRC_101_SUB_3",
+        "user_hash": "u_mrc_101_3",
+        "amount_usd": 3.16,
+        "status": "success",
+        "attempt": 1,
+        "timestamp": "2026-01-01T00:00:00.000Z",
+        "descriptor": "MEALBOX",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      },
+      {
+        "transaction_id": "MRC_101_TXN_3_5",
+        "subscription_id": "MRC_101_SUB_3",
+        "user_hash": "u_mrc_101_3",
+        "amount_usd": 3.16,
+        "status": "success",
+        "attempt": 1,
+        "timestamp": "2026-03-01T00:00:00.000Z",
+        "descriptor": "MEALBOX",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      },
+      {
+        "transaction_id": "MRC_101_TXN_3_3",
+        "subscription_id": "MRC_101_SUB_3",
+        "user_hash": "u_mrc_101_3",
+        "amount_usd": 3.16,
+        "status": "success",
+        "attempt": 1,
+        "timestamp": "2026-05-01T00:00:00.000Z",
+        "descriptor": "MEALBOX",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      },
+      {
+        "transaction_id": "MRC_101_TXN_3_1",
+        "subscription_id": "MRC_101_SUB_3",
+        "user_hash": "u_mrc_101_3",
+        "amount_usd": 3.16,
+        "status": "success",
+        "attempt": 1,
+        "timestamp": "2026-07-01T00:00:00.000Z",
+        "descriptor": "MEALBOX",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      }
+    ],
+    "dispute_events": []
+  },
+  {
+    "merchant": {
+      "merchant_id": "MRC_102",
+      "merchant_name": "FitTrack",
+      "legal_name": "FitTrack Limited",
+      "country": "IN",
+      "category_code": "SAAS",
+      "first_seen_at": "2025-10-01T00:00:00.000Z",
+      "website_url": "https://example-fittrack.test",
+      "customer_support_channels": [
+        "email",
+        "chat"
+      ]
+    },
+    "subscriptions": [
+      {
+        "subscription_id": "MRC_102_SUB_0",
+        "user_hash": "u_mrc_102_0",
+        "billing_interval": "monthly",
+        "trial_days": 7,
+        "start_date": "2025-10-01"
+      },
+      {
+        "subscription_id": "MRC_102_SUB_1",
+        "user_hash": "u_mrc_102_1",
+        "billing_interval": "monthly",
+        "trial_days": 7,
+        "start_date": "2025-10-01"
+      },
+      {
+        "subscription_id": "MRC_102_SUB_2",
+        "user_hash": "u_mrc_102_2",
+        "billing_interval": "monthly",
+        "trial_days": 7,
+        "start_date": "2025-10-01"
+      }
+    ],
+    "lifecycle_events": [
+      {
+        "subscription_id": "MRC_102_SUB_1",
+        "event_type": "cancellation_requested",
+        "timestamp": "2026-06-01T00:00:00.000Z"
+      },
+      {
+        "subscription_id": "MRC_102_SUB_1",
+        "event_type": "cancellation_completed",
+        "timestamp": "2026-06-01T00:00:00.000Z"
+      }
+    ],
+    "transactions": [
+      {
+        "transaction_id": "MRC_102_TXN_0_10",
+        "subscription_id": "MRC_102_SUB_0",
+        "user_hash": "u_mrc_102_0",
+        "amount_usd": 11.55,
+        "status": "success",
+        "attempt": 1,
+        "timestamp": "2025-10-01T00:00:00.000Z",
+        "descriptor": "FITTRACK",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      },
+      {
+        "transaction_id": "MRC_102_TXN_0_8_F",
+        "subscription_id": "MRC_102_SUB_0",
+        "user_hash": "u_mrc_102_0",
+        "amount_usd": 11.55,
+        "status": "failed",
+        "attempt": 1,
+        "timestamp": "2025-12-01T00:00:00.000Z",
+        "descriptor": "FITTRACK",
+        "failure_reason": "insufficient_funds",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      },
+      {
+        "transaction_id": "MRC_102_TXN_0_8_R0",
+        "subscription_id": "MRC_102_SUB_0",
+        "user_hash": "u_mrc_102_0",
+        "amount_usd": 11.55,
+        "status": "success",
+        "attempt": 2,
+        "timestamp": "2025-12-04T00:00:00.000Z",
+        "descriptor": "FITTRACK",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      },
+      {
+        "transaction_id": "MRC_102_TXN_0_6",
+        "subscription_id": "MRC_102_SUB_0",
+        "user_hash": "u_mrc_102_0",
+        "amount_usd": 11.55,
+        "status": "success",
+        "attempt": 1,
+        "timestamp": "2026-02-01T00:00:00.000Z",
+        "descriptor": "FITTRACK",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      },
+      {
+        "transaction_id": "MRC_102_TXN_0_4",
+        "subscription_id": "MRC_102_SUB_0",
+        "user_hash": "u_mrc_102_0",
+        "amount_usd": 11.55,
+        "status": "success",
+        "attempt": 1,
+        "timestamp": "2026-04-01T00:00:00.000Z",
+        "descriptor": "FITTRACK",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      },
+      {
+        "transaction_id": "MRC_102_TXN_0_2_F",
+        "subscription_id": "MRC_102_SUB_0",
+        "user_hash": "u_mrc_102_0",
+        "amount_usd": 11.55,
+        "status": "failed",
+        "attempt": 1,
+        "timestamp": "2026-06-01T00:00:00.000Z",
+        "descriptor": "FITTRACK",
+        "failure_reason": "insufficient_funds",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      },
+      {
+        "transaction_id": "MRC_102_TXN_0_2_R0",
+        "subscription_id": "MRC_102_SUB_0",
+        "user_hash": "u_mrc_102_0",
+        "amount_usd": 11.55,
+        "status": "success",
+        "attempt": 2,
+        "timestamp": "2026-06-04T00:00:00.000Z",
+        "descriptor": "FITTRACK",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      },
+      {
+        "transaction_id": "MRC_102_TXN_1_10",
+        "subscription_id": "MRC_102_SUB_1",
+        "user_hash": "u_mrc_102_1",
+        "amount_usd": 11.55,
+        "status": "success",
+        "attempt": 1,
+        "timestamp": "2025-10-01T00:00:00.000Z",
+        "descriptor": "FITTRACK",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      },
+      {
+        "transaction_id": "MRC_102_TXN_1_8",
+        "subscription_id": "MRC_102_SUB_1",
+        "user_hash": "u_mrc_102_1",
+        "amount_usd": 11.55,
+        "status": "success",
+        "attempt": 1,
+        "timestamp": "2025-12-01T00:00:00.000Z",
+        "descriptor": "FITTRACK",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      },
+      {
+        "transaction_id": "MRC_102_TXN_1_6_F",
+        "subscription_id": "MRC_102_SUB_1",
+        "user_hash": "u_mrc_102_1",
+        "amount_usd": 11.55,
+        "status": "failed",
+        "attempt": 1,
+        "timestamp": "2026-02-01T00:00:00.000Z",
+        "descriptor": "FITTRACK",
+        "failure_reason": "insufficient_funds",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      },
+      {
+        "transaction_id": "MRC_102_TXN_1_6_R0",
+        "subscription_id": "MRC_102_SUB_1",
+        "user_hash": "u_mrc_102_1",
+        "amount_usd": 11.55,
+        "status": "success",
+        "attempt": 2,
+        "timestamp": "2026-02-04T00:00:00.000Z",
+        "descriptor": "FITTRACK",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      },
+      {
+        "transaction_id": "MRC_102_TXN_1_4",
+        "subscription_id": "MRC_102_SUB_1",
+        "user_hash": "u_mrc_102_1",
+        "amount_usd": 11.55,
+        "status": "success",
+        "attempt": 1,
+        "timestamp": "2026-04-01T00:00:00.000Z",
+        "descriptor": "FITTRACK",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      },
+      {
+        "transaction_id": "MRC_102_TXN_1_2",
+        "subscription_id": "MRC_102_SUB_1",
+        "user_hash": "u_mrc_102_1",
+        "amount_usd": 11.55,
+        "status": "success",
+        "attempt": 1,
+        "timestamp": "2026-06-01T00:00:00.000Z",
+        "descriptor": "FITTRACK",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      },
+      {
+        "transaction_id": "MRC_102_TXN_2_10",
+        "subscription_id": "MRC_102_SUB_2",
+        "user_hash": "u_mrc_102_2",
+        "amount_usd": 11.55,
+        "status": "success",
+        "attempt": 1,
+        "timestamp": "2025-10-01T00:00:00.000Z",
+        "descriptor": "FITTRACK",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      },
+      {
+        "transaction_id": "MRC_102_TXN_2_8",
+        "subscription_id": "MRC_102_SUB_2",
+        "user_hash": "u_mrc_102_2",
+        "amount_usd": 11.55,
+        "status": "success",
+        "attempt": 1,
+        "timestamp": "2025-12-01T00:00:00.000Z",
+        "descriptor": "FITTRACK",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      },
+      {
+        "transaction_id": "MRC_102_TXN_2_6",
+        "subscription_id": "MRC_102_SUB_2",
+        "user_hash": "u_mrc_102_2",
+        "amount_usd": 11.55,
+        "status": "success",
+        "attempt": 1,
+        "timestamp": "2026-02-01T00:00:00.000Z",
+        "descriptor": "FITTRACK",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      },
+      {
+        "transaction_id": "MRC_102_TXN_2_4_F",
+        "subscription_id": "MRC_102_SUB_2",
+        "user_hash": "u_mrc_102_2",
+        "amount_usd": 11.55,
+        "status": "failed",
+        "attempt": 1,
+        "timestamp": "2026-04-01T00:00:00.000Z",
+        "descriptor": "FITTRACK",
+        "failure_reason": "insufficient_funds",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      },
+      {
+        "transaction_id": "MRC_102_TXN_2_4_R0",
+        "subscription_id": "MRC_102_SUB_2",
+        "user_hash": "u_mrc_102_2",
+        "amount_usd": 11.55,
+        "status": "success",
+        "attempt": 2,
+        "timestamp": "2026-04-04T00:00:00.000Z",
+        "descriptor": "FITTRACK",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      },
+      {
+        "transaction_id": "MRC_102_TXN_2_2",
+        "subscription_id": "MRC_102_SUB_2",
+        "user_hash": "u_mrc_102_2",
+        "amount_usd": 11.55,
+        "status": "success",
+        "attempt": 1,
+        "timestamp": "2026-06-01T00:00:00.000Z",
+        "descriptor": "FITTRACK",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      }
+    ],
+    "dispute_events": []
+  },
+  {
+    "merchant": {
+      "merchant_id": "MRC_103",
+      "merchant_name": "LingoLab",
+      "legal_name": "LingoLab Limited",
+      "country": "GB",
+      "category_code": "EDUCATION",
+      "first_seen_at": "2025-11-01T00:00:00.000Z",
+      "website_url": "https://example-lingolab.test",
+      "customer_support_channels": [
+        "email",
+        "chat"
+      ]
+    },
+    "subscriptions": [
+      {
+        "subscription_id": "MRC_103_SUB_0",
+        "user_hash": "u_mrc_103_0",
+        "billing_interval": "monthly",
+        "trial_days": 14,
+        "start_date": "2025-11-01"
+      },
+      {
+        "subscription_id": "MRC_103_SUB_1",
+        "user_hash": "u_mrc_103_1",
+        "billing_interval": "monthly",
+        "trial_days": 7,
+        "start_date": "2025-11-01"
+      },
+      {
+        "subscription_id": "MRC_103_SUB_2",
+        "user_hash": "u_mrc_103_2",
+        "billing_interval": "monthly",
+        "trial_days": 7,
+        "start_date": "2025-11-01"
+      }
+    ],
+    "lifecycle_events": [
+      {
+        "subscription_id": "MRC_103_SUB_1",
+        "event_type": "cancellation_requested",
+        "timestamp": "2026-06-01T00:00:00.000Z"
+      },
+      {
+        "subscription_id": "MRC_103_SUB_1",
+        "event_type": "cancellation_completed",
+        "timestamp": "2026-06-01T00:00:00.000Z"
+      }
+    ],
+    "transactions": [
+      {
+        "transaction_id": "MRC_103_TXN_0_9",
+        "subscription_id": "MRC_103_SUB_0",
+        "user_hash": "u_mrc_103_0",
+        "amount_usd": 3.63,
+        "status": "success",
+        "attempt": 1,
+        "timestamp": "2025-11-01T00:00:00.000Z",
+        "descriptor": "LINGOLAB",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      },
+      {
+        "transaction_id": "MRC_103_TXN_0_7",
+        "subscription_id": "MRC_103_SUB_0",
+        "user_hash": "u_mrc_103_0",
+        "amount_usd": 3.63,
+        "status": "success",
+        "attempt": 1,
+        "timestamp": "2026-01-01T00:00:00.000Z",
+        "descriptor": "LINGOLAB",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      },
+      {
+        "transaction_id": "MRC_103_TXN_0_5_F",
+        "subscription_id": "MRC_103_SUB_0",
+        "user_hash": "u_mrc_103_0",
+        "amount_usd": 3.63,
+        "status": "failed",
+        "attempt": 1,
+        "timestamp": "2026-03-01T00:00:00.000Z",
+        "descriptor": "LINGOLAB",
+        "failure_reason": "insufficient_funds",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      },
+      {
+        "transaction_id": "MRC_103_TXN_0_5_R0",
+        "subscription_id": "MRC_103_SUB_0",
+        "user_hash": "u_mrc_103_0",
+        "amount_usd": 3.63,
+        "status": "success",
+        "attempt": 2,
+        "timestamp": "2026-03-04T00:00:00.000Z",
+        "descriptor": "LINGOLAB",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      },
+      {
+        "transaction_id": "MRC_103_TXN_0_3",
+        "subscription_id": "MRC_103_SUB_0",
+        "user_hash": "u_mrc_103_0",
+        "amount_usd": 3.63,
+        "status": "success",
+        "attempt": 1,
+        "timestamp": "2026-05-01T00:00:00.000Z",
+        "descriptor": "LINGOLAB",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      },
+      {
+        "transaction_id": "MRC_103_TXN_0_1_F",
+        "subscription_id": "MRC_103_SUB_0",
+        "user_hash": "u_mrc_103_0",
+        "amount_usd": 3.63,
+        "status": "failed",
+        "attempt": 1,
+        "timestamp": "2026-07-01T00:00:00.000Z",
+        "descriptor": "LINGOLAB",
+        "failure_reason": "insufficient_funds",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      },
+      {
+        "transaction_id": "MRC_103_TXN_0_1_R0",
+        "subscription_id": "MRC_103_SUB_0",
+        "user_hash": "u_mrc_103_0",
+        "amount_usd": 3.63,
+        "status": "success",
+        "attempt": 2,
+        "timestamp": "2026-07-04T00:00:00.000Z",
+        "descriptor": "LINGOLAB",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      },
+      {
+        "transaction_id": "MRC_103_TXN_1_9_F",
+        "subscription_id": "MRC_103_SUB_1",
+        "user_hash": "u_mrc_103_1",
+        "amount_usd": 3.63,
+        "status": "failed",
+        "attempt": 1,
+        "timestamp": "2025-11-01T00:00:00.000Z",
+        "descriptor": "LINGOLAB",
+        "failure_reason": "insufficient_funds",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      },
+      {
+        "transaction_id": "MRC_103_TXN_1_9_R0",
+        "subscription_id": "MRC_103_SUB_1",
+        "user_hash": "u_mrc_103_1",
+        "amount_usd": 3.63,
+        "status": "success",
+        "attempt": 2,
+        "timestamp": "2025-11-04T00:00:00.000Z",
+        "descriptor": "LINGOLAB",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      },
+      {
+        "transaction_id": "MRC_103_TXN_1_7",
+        "subscription_id": "MRC_103_SUB_1",
+        "user_hash": "u_mrc_103_1",
+        "amount_usd": 3.63,
+        "status": "success",
+        "attempt": 1,
+        "timestamp": "2026-01-01T00:00:00.000Z",
+        "descriptor": "LINGOLAB",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      },
+      {
+        "transaction_id": "MRC_103_TXN_1_5",
+        "subscription_id": "MRC_103_SUB_1",
+        "user_hash": "u_mrc_103_1",
+        "amount_usd": 3.63,
+        "status": "success",
+        "attempt": 1,
+        "timestamp": "2026-03-01T00:00:00.000Z",
+        "descriptor": "LINGOLAB",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      },
+      {
+        "transaction_id": "MRC_103_TXN_1_3",
+        "subscription_id": "MRC_103_SUB_1",
+        "user_hash": "u_mrc_103_1",
+        "amount_usd": 3.63,
+        "status": "success",
+        "attempt": 1,
+        "timestamp": "2026-05-01T00:00:00.000Z",
+        "descriptor": "LINGOLAB",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      },
+      {
+        "transaction_id": "MRC_103_TXN_1_1",
+        "subscription_id": "MRC_103_SUB_1",
+        "user_hash": "u_mrc_103_1",
+        "amount_usd": 3.63,
+        "status": "success",
+        "attempt": 1,
+        "timestamp": "2026-07-01T00:00:00.000Z",
+        "descriptor": "LINGOLAB",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      },
+      {
+        "transaction_id": "MRC_103_TXN_2_9",
+        "subscription_id": "MRC_103_SUB_2",
+        "user_hash": "u_mrc_103_2",
+        "amount_usd": 3.63,
+        "status": "success",
+        "attempt": 1,
+        "timestamp": "2025-11-01T00:00:00.000Z",
+        "descriptor": "LINGOLAB",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      },
+      {
+        "transaction_id": "MRC_103_TXN_2_7",
+        "subscription_id": "MRC_103_SUB_2",
+        "user_hash": "u_mrc_103_2",
+        "amount_usd": 3.63,
+        "status": "success",
+        "attempt": 1,
+        "timestamp": "2026-01-01T00:00:00.000Z",
+        "descriptor": "LINGOLAB",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      },
+      {
+        "transaction_id": "MRC_103_TXN_2_5",
+        "subscription_id": "MRC_103_SUB_2",
+        "user_hash": "u_mrc_103_2",
+        "amount_usd": 3.63,
+        "status": "success",
+        "attempt": 1,
+        "timestamp": "2026-03-01T00:00:00.000Z",
+        "descriptor": "LINGOLAB",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      },
+      {
+        "transaction_id": "MRC_103_TXN_2_3",
+        "subscription_id": "MRC_103_SUB_2",
+        "user_hash": "u_mrc_103_2",
+        "amount_usd": 3.63,
+        "status": "success",
+        "attempt": 1,
+        "timestamp": "2026-05-01T00:00:00.000Z",
+        "descriptor": "LINGOLAB",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      },
+      {
+        "transaction_id": "MRC_103_TXN_2_1",
+        "subscription_id": "MRC_103_SUB_2",
+        "user_hash": "u_mrc_103_2",
+        "amount_usd": 3.63,
+        "status": "success",
+        "attempt": 1,
+        "timestamp": "2026-07-01T00:00:00.000Z",
+        "descriptor": "LINGOLAB",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      }
+    ],
+    "dispute_events": []
+  },
+  {
+    "merchant": {
+      "merchant_id": "MRC_104",
+      "merchant_name": "PodStream",
+      "legal_name": "PodStream Limited",
+      "country": "IN",
+      "category_code": "FOOD_DELIVERY",
+      "first_seen_at": "2025-08-01T00:00:00.000Z",
+      "website_url": "https://example-podstream.test",
+      "customer_support_channels": [
+        "email",
+        "chat"
+      ]
+    },
+    "subscriptions": [
+      {
+        "subscription_id": "MRC_104_SUB_0",
+        "user_hash": "u_mrc_104_0",
+        "billing_interval": "monthly",
+        "trial_days": 14,
+        "start_date": "2025-08-01"
+      },
+      {
+        "subscription_id": "MRC_104_SUB_1",
+        "user_hash": "u_mrc_104_1",
+        "billing_interval": "monthly",
+        "trial_days": 7,
+        "start_date": "2025-08-01"
+      }
+    ],
+    "lifecycle_events": [
+      {
+        "subscription_id": "MRC_104_SUB_0",
+        "event_type": "price_change",
+        "timestamp": "2026-02-01T00:00:00.000Z",
+        "old_amount": 5.19,
+        "new_amount": 6.23,
+        "notification_sent": true,
+        "notification_method": "email",
+        "advance_notice_days": 30
+      },
+      {
+        "subscription_id": "MRC_104_SUB_1",
+        "event_type": "cancellation_requested",
+        "timestamp": "2026-06-01T00:00:00.000Z"
+      },
+      {
+        "subscription_id": "MRC_104_SUB_1",
+        "event_type": "cancellation_completed",
+        "timestamp": "2026-06-01T00:00:00.000Z"
+      }
+    ],
+    "transactions": [
+      {
+        "transaction_id": "MRC_104_TXN_0_12",
+        "subscription_id": "MRC_104_SUB_0",
+        "user_hash": "u_mrc_104_0",
+        "amount_usd": 5.19,
+        "status": "success",
+        "attempt": 1,
+        "timestamp": "2025-08-01T00:00:00.000Z",
+        "descriptor": "PODSTREAM",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      },
+      {
+        "transaction_id": "MRC_104_TXN_0_10",
+        "subscription_id": "MRC_104_SUB_0",
+        "user_hash": "u_mrc_104_0",
+        "amount_usd": 5.19,
+        "status": "success",
+        "attempt": 1,
+        "timestamp": "2025-10-01T00:00:00.000Z",
+        "descriptor": "PODSTREAM",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      },
+      {
+        "transaction_id": "MRC_104_TXN_0_8",
+        "subscription_id": "MRC_104_SUB_0",
+        "user_hash": "u_mrc_104_0",
+        "amount_usd": 5.19,
+        "status": "success",
+        "attempt": 1,
+        "timestamp": "2025-12-01T00:00:00.000Z",
+        "descriptor": "PODSTREAM",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      },
+      {
+        "transaction_id": "MRC_104_TXN_0_6",
+        "subscription_id": "MRC_104_SUB_0",
+        "user_hash": "u_mrc_104_0",
+        "amount_usd": 6.23,
+        "status": "success",
+        "attempt": 1,
+        "timestamp": "2026-02-01T00:00:00.000Z",
+        "descriptor": "PODSTREAM",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      },
+      {
+        "transaction_id": "MRC_104_TXN_0_4",
+        "subscription_id": "MRC_104_SUB_0",
+        "user_hash": "u_mrc_104_0",
+        "amount_usd": 6.23,
+        "status": "success",
+        "attempt": 1,
+        "timestamp": "2026-04-01T00:00:00.000Z",
+        "descriptor": "PODSTREAM",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      },
+      {
+        "transaction_id": "MRC_104_TXN_0_2",
+        "subscription_id": "MRC_104_SUB_0",
+        "user_hash": "u_mrc_104_0",
+        "amount_usd": 6.23,
+        "status": "success",
+        "attempt": 1,
+        "timestamp": "2026-06-01T00:00:00.000Z",
+        "descriptor": "PODSTREAM",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      },
+      {
+        "transaction_id": "MRC_104_TXN_1_12",
+        "subscription_id": "MRC_104_SUB_1",
+        "user_hash": "u_mrc_104_1",
+        "amount_usd": 5.19,
+        "status": "success",
+        "attempt": 1,
+        "timestamp": "2025-08-01T00:00:00.000Z",
+        "descriptor": "PODSTREAM",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      },
+      {
+        "transaction_id": "MRC_104_TXN_1_10",
+        "subscription_id": "MRC_104_SUB_1",
+        "user_hash": "u_mrc_104_1",
+        "amount_usd": 5.19,
+        "status": "success",
+        "attempt": 1,
+        "timestamp": "2025-10-01T00:00:00.000Z",
+        "descriptor": "PODSTREAM",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      },
+      {
+        "transaction_id": "MRC_104_TXN_1_8",
+        "subscription_id": "MRC_104_SUB_1",
+        "user_hash": "u_mrc_104_1",
+        "amount_usd": 5.19,
+        "status": "success",
+        "attempt": 1,
+        "timestamp": "2025-12-01T00:00:00.000Z",
+        "descriptor": "PODSTREAM",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      },
+      {
+        "transaction_id": "MRC_104_TXN_1_6",
+        "subscription_id": "MRC_104_SUB_1",
+        "user_hash": "u_mrc_104_1",
+        "amount_usd": 6.23,
+        "status": "success",
+        "attempt": 1,
+        "timestamp": "2026-02-01T00:00:00.000Z",
+        "descriptor": "PODSTREAM",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      },
+      {
+        "transaction_id": "MRC_104_TXN_1_4",
+        "subscription_id": "MRC_104_SUB_1",
+        "user_hash": "u_mrc_104_1",
+        "amount_usd": 6.23,
+        "status": "success",
+        "attempt": 1,
+        "timestamp": "2026-04-01T00:00:00.000Z",
+        "descriptor": "PODSTREAM",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      },
+      {
+        "transaction_id": "MRC_104_TXN_1_2",
+        "subscription_id": "MRC_104_SUB_1",
+        "user_hash": "u_mrc_104_1",
+        "amount_usd": 6.23,
+        "status": "success",
+        "attempt": 1,
+        "timestamp": "2026-06-01T00:00:00.000Z",
+        "descriptor": "PODSTREAM",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      }
+    ],
+    "dispute_events": []
+  },
+  {
+    "merchant": {
+      "merchant_id": "MRC_105",
+      "merchant_name": "DocSafe",
+      "legal_name": "DocSafe Limited",
+      "country": "GB",
+      "category_code": "SAAS",
+      "first_seen_at": "2025-12-01T00:00:00.000Z",
+      "website_url": "https://example-docsafe.test",
+      "customer_support_channels": [
+        "email",
+        "chat"
+      ]
+    },
+    "subscriptions": [
+      {
+        "subscription_id": "MRC_105_SUB_0",
+        "user_hash": "u_mrc_105_0",
+        "billing_interval": "monthly",
+        "trial_days": 14,
+        "start_date": "2025-12-01"
+      },
+      {
+        "subscription_id": "MRC_105_SUB_1",
+        "user_hash": "u_mrc_105_1",
+        "billing_interval": "monthly",
+        "trial_days": 7,
+        "start_date": "2025-12-01"
+      },
+      {
+        "subscription_id": "MRC_105_SUB_2",
+        "user_hash": "u_mrc_105_2",
+        "billing_interval": "monthly",
+        "trial_days": 0,
+        "start_date": "2025-12-01"
+      }
+    ],
+    "lifecycle_events": [
+      {
+        "subscription_id": "MRC_105_SUB_0",
+        "event_type": "price_change",
+        "timestamp": "2026-04-01T00:00:00.000Z",
+        "old_amount": 4.57,
+        "new_amount": 5.48,
+        "notification_sent": true,
+        "notification_method": "email",
+        "advance_notice_days": 30
+      },
+      {
+        "subscription_id": "MRC_105_SUB_1",
+        "event_type": "cancellation_requested",
+        "timestamp": "2026-06-01T00:00:00.000Z"
+      },
+      {
+        "subscription_id": "MRC_105_SUB_1",
+        "event_type": "cancellation_completed",
+        "timestamp": "2026-06-01T00:00:00.000Z"
+      }
+    ],
+    "transactions": [
+      {
+        "transaction_id": "MRC_105_TXN_0_8",
+        "subscription_id": "MRC_105_SUB_0",
+        "user_hash": "u_mrc_105_0",
+        "amount_usd": 4.57,
+        "status": "success",
+        "attempt": 1,
+        "timestamp": "2025-12-01T00:00:00.000Z",
+        "descriptor": "DOCSAFE",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      },
+      {
+        "transaction_id": "MRC_105_TXN_0_6",
+        "subscription_id": "MRC_105_SUB_0",
+        "user_hash": "u_mrc_105_0",
+        "amount_usd": 4.57,
+        "status": "success",
+        "attempt": 1,
+        "timestamp": "2026-02-01T00:00:00.000Z",
+        "descriptor": "DOCSAFE",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      },
+      {
+        "transaction_id": "MRC_105_TXN_0_4_F",
+        "subscription_id": "MRC_105_SUB_0",
+        "user_hash": "u_mrc_105_0",
+        "amount_usd": 5.48,
+        "status": "failed",
+        "attempt": 1,
+        "timestamp": "2026-04-01T00:00:00.000Z",
+        "descriptor": "DOCSAFE",
+        "failure_reason": "insufficient_funds",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      },
+      {
+        "transaction_id": "MRC_105_TXN_0_4_R0",
+        "subscription_id": "MRC_105_SUB_0",
+        "user_hash": "u_mrc_105_0",
+        "amount_usd": 5.48,
+        "status": "success",
+        "attempt": 2,
+        "timestamp": "2026-04-04T00:00:00.000Z",
+        "descriptor": "DOCSAFE",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      },
+      {
+        "transaction_id": "MRC_105_TXN_0_2",
+        "subscription_id": "MRC_105_SUB_0",
+        "user_hash": "u_mrc_105_0",
+        "amount_usd": 5.48,
+        "status": "success",
+        "attempt": 1,
+        "timestamp": "2026-06-01T00:00:00.000Z",
+        "descriptor": "DOCSAFE",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      },
+      {
+        "transaction_id": "MRC_105_TXN_1_8",
+        "subscription_id": "MRC_105_SUB_1",
+        "user_hash": "u_mrc_105_1",
+        "amount_usd": 4.57,
+        "status": "success",
+        "attempt": 1,
+        "timestamp": "2025-12-01T00:00:00.000Z",
+        "descriptor": "DOCSAFE",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      },
+      {
+        "transaction_id": "MRC_105_TXN_1_6_F",
+        "subscription_id": "MRC_105_SUB_1",
+        "user_hash": "u_mrc_105_1",
+        "amount_usd": 4.57,
+        "status": "failed",
+        "attempt": 1,
+        "timestamp": "2026-02-01T00:00:00.000Z",
+        "descriptor": "DOCSAFE",
+        "failure_reason": "insufficient_funds",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      },
+      {
+        "transaction_id": "MRC_105_TXN_1_6_R0",
+        "subscription_id": "MRC_105_SUB_1",
+        "user_hash": "u_mrc_105_1",
+        "amount_usd": 4.57,
+        "status": "success",
+        "attempt": 2,
+        "timestamp": "2026-02-04T00:00:00.000Z",
+        "descriptor": "DOCSAFE",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      },
+      {
+        "transaction_id": "MRC_105_TXN_1_4",
+        "subscription_id": "MRC_105_SUB_1",
+        "user_hash": "u_mrc_105_1",
+        "amount_usd": 5.48,
+        "status": "success",
+        "attempt": 1,
+        "timestamp": "2026-04-01T00:00:00.000Z",
+        "descriptor": "DOCSAFE",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      },
+      {
+        "transaction_id": "MRC_105_TXN_1_2_F",
+        "subscription_id": "MRC_105_SUB_1",
+        "user_hash": "u_mrc_105_1",
+        "amount_usd": 5.48,
+        "status": "failed",
+        "attempt": 1,
+        "timestamp": "2026-06-01T00:00:00.000Z",
+        "descriptor": "DOCSAFE",
+        "failure_reason": "insufficient_funds",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      },
+      {
+        "transaction_id": "MRC_105_TXN_1_2_R0",
+        "subscription_id": "MRC_105_SUB_1",
+        "user_hash": "u_mrc_105_1",
+        "amount_usd": 5.48,
+        "status": "success",
+        "attempt": 2,
+        "timestamp": "2026-06-04T00:00:00.000Z",
+        "descriptor": "DOCSAFE",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      },
+      {
+        "transaction_id": "MRC_105_TXN_2_8",
+        "subscription_id": "MRC_105_SUB_2",
+        "user_hash": "u_mrc_105_2",
+        "amount_usd": 4.57,
+        "status": "success",
+        "attempt": 1,
+        "timestamp": "2025-12-01T00:00:00.000Z",
+        "descriptor": "DOCSAFE",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      },
+      {
+        "transaction_id": "MRC_105_TXN_2_6",
+        "subscription_id": "MRC_105_SUB_2",
+        "user_hash": "u_mrc_105_2",
+        "amount_usd": 4.57,
+        "status": "success",
+        "attempt": 1,
+        "timestamp": "2026-02-01T00:00:00.000Z",
+        "descriptor": "DOCSAFE",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      },
+      {
+        "transaction_id": "MRC_105_TXN_2_4_F",
+        "subscription_id": "MRC_105_SUB_2",
+        "user_hash": "u_mrc_105_2",
+        "amount_usd": 5.48,
+        "status": "failed",
+        "attempt": 1,
+        "timestamp": "2026-04-01T00:00:00.000Z",
+        "descriptor": "DOCSAFE",
+        "failure_reason": "insufficient_funds",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      },
+      {
+        "transaction_id": "MRC_105_TXN_2_4_R0",
+        "subscription_id": "MRC_105_SUB_2",
+        "user_hash": "u_mrc_105_2",
+        "amount_usd": 5.48,
+        "status": "success",
+        "attempt": 2,
+        "timestamp": "2026-04-04T00:00:00.000Z",
+        "descriptor": "DOCSAFE",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      },
+      {
+        "transaction_id": "MRC_105_TXN_2_2",
+        "subscription_id": "MRC_105_SUB_2",
+        "user_hash": "u_mrc_105_2",
+        "amount_usd": 5.48,
+        "status": "success",
+        "attempt": 1,
+        "timestamp": "2026-06-01T00:00:00.000Z",
+        "descriptor": "DOCSAFE",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      }
+    ],
+    "dispute_events": []
+  },
+  {
+    "merchant": {
+      "merchant_id": "MRC_106",
+      "merchant_name": "GameChest",
+      "legal_name": "GameChest Limited",
+      "country": "US",
+      "category_code": "SAAS",
+      "first_seen_at": "2025-10-01T00:00:00.000Z",
+      "website_url": "https://example-gamechest.test",
+      "customer_support_channels": [
+        "email",
+        "chat"
+      ]
+    },
+    "subscriptions": [
+      {
+        "subscription_id": "MRC_106_SUB_0",
+        "user_hash": "u_mrc_106_0",
+        "billing_interval": "monthly",
+        "trial_days": 14,
+        "start_date": "2025-10-01"
+      },
+      {
+        "subscription_id": "MRC_106_SUB_1",
+        "user_hash": "u_mrc_106_1",
+        "billing_interval": "monthly",
+        "trial_days": 0,
+        "start_date": "2025-10-01"
+      }
+    ],
+    "lifecycle_events": [
+      {
+        "subscription_id": "MRC_106_SUB_0",
+        "event_type": "price_change",
+        "timestamp": "2026-03-01T00:00:00.000Z",
+        "old_amount": 9.89,
+        "new_amount": 11.87,
+        "notification_sent": true,
+        "notification_method": "email",
+        "advance_notice_days": 30
+      },
+      {
+        "subscription_id": "MRC_106_SUB_1",
+        "event_type": "cancellation_requested",
+        "timestamp": "2026-06-01T00:00:00.000Z"
+      },
+      {
+        "subscription_id": "MRC_106_SUB_1",
+        "event_type": "cancellation_completed",
+        "timestamp": "2026-06-01T00:00:00.000Z"
+      }
+    ],
+    "transactions": [
+      {
+        "transaction_id": "MRC_106_TXN_0_10",
+        "subscription_id": "MRC_106_SUB_0",
+        "user_hash": "u_mrc_106_0",
+        "amount_usd": 9.89,
+        "status": "success",
+        "attempt": 1,
+        "timestamp": "2025-10-01T00:00:00.000Z",
+        "descriptor": "GAMECHEST",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      },
+      {
+        "transaction_id": "MRC_106_TXN_0_8",
+        "subscription_id": "MRC_106_SUB_0",
+        "user_hash": "u_mrc_106_0",
+        "amount_usd": 9.89,
+        "status": "success",
+        "attempt": 1,
+        "timestamp": "2025-12-01T00:00:00.000Z",
+        "descriptor": "GAMECHEST",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      },
+      {
+        "transaction_id": "MRC_106_TXN_0_6",
+        "subscription_id": "MRC_106_SUB_0",
+        "user_hash": "u_mrc_106_0",
+        "amount_usd": 9.89,
+        "status": "success",
+        "attempt": 1,
+        "timestamp": "2026-02-01T00:00:00.000Z",
+        "descriptor": "GAMECHEST",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      },
+      {
+        "transaction_id": "MRC_106_TXN_0_4",
+        "subscription_id": "MRC_106_SUB_0",
+        "user_hash": "u_mrc_106_0",
+        "amount_usd": 11.87,
+        "status": "success",
+        "attempt": 1,
+        "timestamp": "2026-04-01T00:00:00.000Z",
+        "descriptor": "GAMECHEST",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      },
+      {
+        "transaction_id": "MRC_106_TXN_0_2_F",
+        "subscription_id": "MRC_106_SUB_0",
+        "user_hash": "u_mrc_106_0",
+        "amount_usd": 11.87,
+        "status": "failed",
+        "attempt": 1,
+        "timestamp": "2026-06-01T00:00:00.000Z",
+        "descriptor": "GAMECHEST",
+        "failure_reason": "insufficient_funds",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      },
+      {
+        "transaction_id": "MRC_106_TXN_0_2_R0",
+        "subscription_id": "MRC_106_SUB_0",
+        "user_hash": "u_mrc_106_0",
+        "amount_usd": 11.87,
+        "status": "success",
+        "attempt": 2,
+        "timestamp": "2026-06-04T00:00:00.000Z",
+        "descriptor": "GAMECHEST",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      },
+      {
+        "transaction_id": "MRC_106_TXN_1_10",
+        "subscription_id": "MRC_106_SUB_1",
+        "user_hash": "u_mrc_106_1",
+        "amount_usd": 9.89,
+        "status": "success",
+        "attempt": 1,
+        "timestamp": "2025-10-01T00:00:00.000Z",
+        "descriptor": "GAMECHEST",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      },
+      {
+        "transaction_id": "MRC_106_TXN_1_8",
+        "subscription_id": "MRC_106_SUB_1",
+        "user_hash": "u_mrc_106_1",
+        "amount_usd": 9.89,
+        "status": "success",
+        "attempt": 1,
+        "timestamp": "2025-12-01T00:00:00.000Z",
+        "descriptor": "GAMECHEST",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      },
+      {
+        "transaction_id": "MRC_106_TXN_1_6_F",
+        "subscription_id": "MRC_106_SUB_1",
+        "user_hash": "u_mrc_106_1",
+        "amount_usd": 9.89,
+        "status": "failed",
+        "attempt": 1,
+        "timestamp": "2026-02-01T00:00:00.000Z",
+        "descriptor": "GAMECHEST",
+        "failure_reason": "insufficient_funds",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      },
+      {
+        "transaction_id": "MRC_106_TXN_1_6_R0",
+        "subscription_id": "MRC_106_SUB_1",
+        "user_hash": "u_mrc_106_1",
+        "amount_usd": 9.89,
+        "status": "success",
+        "attempt": 2,
+        "timestamp": "2026-02-04T00:00:00.000Z",
+        "descriptor": "GAMECHEST",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      },
+      {
+        "transaction_id": "MRC_106_TXN_1_4_F",
+        "subscription_id": "MRC_106_SUB_1",
+        "user_hash": "u_mrc_106_1",
+        "amount_usd": 11.87,
+        "status": "failed",
+        "attempt": 1,
+        "timestamp": "2026-04-01T00:00:00.000Z",
+        "descriptor": "GAMECHEST",
+        "failure_reason": "insufficient_funds",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      },
+      {
+        "transaction_id": "MRC_106_TXN_1_4_R0",
+        "subscription_id": "MRC_106_SUB_1",
+        "user_hash": "u_mrc_106_1",
+        "amount_usd": 11.87,
+        "status": "success",
+        "attempt": 2,
+        "timestamp": "2026-04-04T00:00:00.000Z",
+        "descriptor": "GAMECHEST",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      },
+      {
+        "transaction_id": "MRC_106_TXN_1_2_F",
+        "subscription_id": "MRC_106_SUB_1",
+        "user_hash": "u_mrc_106_1",
+        "amount_usd": 11.87,
+        "status": "failed",
+        "attempt": 1,
+        "timestamp": "2026-06-01T00:00:00.000Z",
+        "descriptor": "GAMECHEST",
+        "failure_reason": "insufficient_funds",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      },
+      {
+        "transaction_id": "MRC_106_TXN_1_2_R0",
+        "subscription_id": "MRC_106_SUB_1",
+        "user_hash": "u_mrc_106_1",
+        "amount_usd": 11.87,
+        "status": "success",
+        "attempt": 2,
+        "timestamp": "2026-06-04T00:00:00.000Z",
+        "descriptor": "GAMECHEST",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      }
+    ],
+    "dispute_events": []
+  },
+  {
+    "merchant": {
+      "merchant_id": "MRC_107",
+      "merchant_name": "NoteNest",
+      "legal_name": "NoteNest Limited",
+      "country": "GB",
+      "category_code": "DIGITAL_MEDIA",
+      "first_seen_at": "2025-12-01T00:00:00.000Z",
+      "website_url": "https://example-notenest.test",
+      "customer_support_channels": [
+        "email",
+        "chat"
+      ]
+    },
+    "subscriptions": [
+      {
+        "subscription_id": "MRC_107_SUB_0",
+        "user_hash": "u_mrc_107_0",
+        "billing_interval": "monthly",
+        "trial_days": 0,
+        "start_date": "2025-12-01"
+      },
+      {
+        "subscription_id": "MRC_107_SUB_1",
+        "user_hash": "u_mrc_107_1",
+        "billing_interval": "monthly",
+        "trial_days": 0,
+        "start_date": "2025-12-01"
+      },
+      {
+        "subscription_id": "MRC_107_SUB_2",
+        "user_hash": "u_mrc_107_2",
+        "billing_interval": "monthly",
+        "trial_days": 14,
+        "start_date": "2025-12-01"
+      },
+      {
+        "subscription_id": "MRC_107_SUB_3",
+        "user_hash": "u_mrc_107_3",
+        "billing_interval": "monthly",
+        "trial_days": 14,
+        "start_date": "2025-12-01"
+      }
+    ],
+    "lifecycle_events": [
+      {
+        "subscription_id": "MRC_107_SUB_0",
+        "event_type": "price_change",
+        "timestamp": "2026-04-01T00:00:00.000Z",
+        "old_amount": 10.43,
+        "new_amount": 12.52,
+        "notification_sent": true,
+        "notification_method": "email",
+        "advance_notice_days": 30
+      },
+      {
+        "subscription_id": "MRC_107_SUB_1",
+        "event_type": "cancellation_requested",
+        "timestamp": "2026-06-01T00:00:00.000Z"
+      }
+    ],
+    "transactions": [
+      {
+        "transaction_id": "MRC_107_TXN_0_8",
+        "subscription_id": "MRC_107_SUB_0",
+        "user_hash": "u_mrc_107_0",
+        "amount_usd": 10.43,
+        "status": "success",
+        "attempt": 1,
+        "timestamp": "2025-12-01T00:00:00.000Z",
+        "descriptor": "NOTENEST",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      },
+      {
+        "transaction_id": "MRC_107_TXN_0_6",
+        "subscription_id": "MRC_107_SUB_0",
+        "user_hash": "u_mrc_107_0",
+        "amount_usd": 10.43,
+        "status": "success",
+        "attempt": 1,
+        "timestamp": "2026-02-01T00:00:00.000Z",
+        "descriptor": "NOTENEST",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      },
+      {
+        "transaction_id": "MRC_107_TXN_0_4",
+        "subscription_id": "MRC_107_SUB_0",
+        "user_hash": "u_mrc_107_0",
+        "amount_usd": 12.52,
+        "status": "success",
+        "attempt": 1,
+        "timestamp": "2026-04-01T00:00:00.000Z",
+        "descriptor": "NOTENEST INC",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      },
+      {
+        "transaction_id": "MRC_107_TXN_0_2",
+        "subscription_id": "MRC_107_SUB_0",
+        "user_hash": "u_mrc_107_0",
+        "amount_usd": 12.52,
+        "status": "success",
+        "attempt": 1,
+        "timestamp": "2026-06-01T00:00:00.000Z",
+        "descriptor": "NOTENEST INC",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      },
+      {
+        "transaction_id": "MRC_107_TXN_1_8",
+        "subscription_id": "MRC_107_SUB_1",
+        "user_hash": "u_mrc_107_1",
+        "amount_usd": 10.43,
+        "status": "success",
+        "attempt": 1,
+        "timestamp": "2025-12-01T00:00:00.000Z",
+        "descriptor": "NOTENEST",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      },
+      {
+        "transaction_id": "MRC_107_TXN_1_6",
+        "subscription_id": "MRC_107_SUB_1",
+        "user_hash": "u_mrc_107_1",
+        "amount_usd": 10.43,
+        "status": "success",
+        "attempt": 1,
+        "timestamp": "2026-02-01T00:00:00.000Z",
+        "descriptor": "NOTENEST",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      },
+      {
+        "transaction_id": "MRC_107_TXN_1_4",
+        "subscription_id": "MRC_107_SUB_1",
+        "user_hash": "u_mrc_107_1",
+        "amount_usd": 12.52,
+        "status": "success",
+        "attempt": 1,
+        "timestamp": "2026-04-01T00:00:00.000Z",
+        "descriptor": "NOTENEST INC",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      },
+      {
+        "transaction_id": "MRC_107_TXN_1_2",
+        "subscription_id": "MRC_107_SUB_1",
+        "user_hash": "u_mrc_107_1",
+        "amount_usd": 12.52,
+        "status": "success",
+        "attempt": 1,
+        "timestamp": "2026-06-01T00:00:00.000Z",
+        "descriptor": "NOTENEST INC",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      },
+      {
+        "transaction_id": "MRC_107_TXN_2_8",
+        "subscription_id": "MRC_107_SUB_2",
+        "user_hash": "u_mrc_107_2",
+        "amount_usd": 10.43,
+        "status": "success",
+        "attempt": 1,
+        "timestamp": "2025-12-01T00:00:00.000Z",
+        "descriptor": "NOTENEST",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      },
+      {
+        "transaction_id": "MRC_107_TXN_2_6",
+        "subscription_id": "MRC_107_SUB_2",
+        "user_hash": "u_mrc_107_2",
+        "amount_usd": 10.43,
+        "status": "success",
+        "attempt": 1,
+        "timestamp": "2026-02-01T00:00:00.000Z",
+        "descriptor": "NOTENEST",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      },
+      {
+        "transaction_id": "MRC_107_TXN_2_4",
+        "subscription_id": "MRC_107_SUB_2",
+        "user_hash": "u_mrc_107_2",
+        "amount_usd": 12.52,
+        "status": "success",
+        "attempt": 1,
+        "timestamp": "2026-04-01T00:00:00.000Z",
+        "descriptor": "NOTENEST INC",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      },
+      {
+        "transaction_id": "MRC_107_TXN_2_2_F",
+        "subscription_id": "MRC_107_SUB_2",
+        "user_hash": "u_mrc_107_2",
+        "amount_usd": 12.52,
+        "status": "failed",
+        "attempt": 1,
+        "timestamp": "2026-06-01T00:00:00.000Z",
+        "descriptor": "NOTENEST INC",
+        "failure_reason": "insufficient_funds",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      },
+      {
+        "transaction_id": "MRC_107_TXN_2_2_R0",
+        "subscription_id": "MRC_107_SUB_2",
+        "user_hash": "u_mrc_107_2",
+        "amount_usd": 12.52,
+        "status": "failed",
+        "attempt": 2,
+        "timestamp": "2026-06-04T00:00:00.000Z",
+        "descriptor": "NOTENEST INC",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      },
+      {
+        "transaction_id": "MRC_107_TXN_2_2_R1",
+        "subscription_id": "MRC_107_SUB_2",
+        "user_hash": "u_mrc_107_2",
+        "amount_usd": 12.52,
+        "status": "success",
+        "attempt": 3,
+        "timestamp": "2026-06-07T00:00:00.000Z",
+        "descriptor": "NOTENEST INC",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      },
+      {
+        "transaction_id": "MRC_107_TXN_3_8",
+        "subscription_id": "MRC_107_SUB_3",
+        "user_hash": "u_mrc_107_3",
+        "amount_usd": 10.43,
+        "status": "success",
+        "attempt": 1,
+        "timestamp": "2025-12-01T00:00:00.000Z",
+        "descriptor": "NOTENEST",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      },
+      {
+        "transaction_id": "MRC_107_TXN_3_6",
+        "subscription_id": "MRC_107_SUB_3",
+        "user_hash": "u_mrc_107_3",
+        "amount_usd": 10.43,
+        "status": "success",
+        "attempt": 1,
+        "timestamp": "2026-02-01T00:00:00.000Z",
+        "descriptor": "NOTENEST",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      },
+      {
+        "transaction_id": "MRC_107_TXN_3_4_F",
+        "subscription_id": "MRC_107_SUB_3",
+        "user_hash": "u_mrc_107_3",
+        "amount_usd": 12.52,
+        "status": "failed",
+        "attempt": 1,
+        "timestamp": "2026-04-01T00:00:00.000Z",
+        "descriptor": "NOTENEST INC",
+        "failure_reason": "insufficient_funds",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      },
+      {
+        "transaction_id": "MRC_107_TXN_3_4_R0",
+        "subscription_id": "MRC_107_SUB_3",
+        "user_hash": "u_mrc_107_3",
+        "amount_usd": 12.52,
+        "status": "failed",
+        "attempt": 2,
+        "timestamp": "2026-04-04T00:00:00.000Z",
+        "descriptor": "NOTENEST INC",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      },
+      {
+        "transaction_id": "MRC_107_TXN_3_4_R1",
+        "subscription_id": "MRC_107_SUB_3",
+        "user_hash": "u_mrc_107_3",
+        "amount_usd": 12.52,
+        "status": "success",
+        "attempt": 3,
+        "timestamp": "2026-04-07T00:00:00.000Z",
+        "descriptor": "NOTENEST INC",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      },
+      {
+        "transaction_id": "MRC_107_TXN_3_2",
+        "subscription_id": "MRC_107_SUB_3",
+        "user_hash": "u_mrc_107_3",
+        "amount_usd": 12.52,
+        "status": "success",
+        "attempt": 1,
+        "timestamp": "2026-06-01T00:00:00.000Z",
+        "descriptor": "NOTENEST INC",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      }
+    ],
+    "dispute_events": []
+  },
+  {
+    "merchant": {
+      "merchant_id": "MRC_108",
+      "merchant_name": "RidePass",
+      "legal_name": "RidePass Limited",
+      "country": "GB",
+      "category_code": "EDUCATION",
+      "first_seen_at": "2025-08-01T00:00:00.000Z",
+      "website_url": "https://example-ridepass.test",
+      "customer_support_channels": [
+        "email",
+        "chat"
+      ]
+    },
+    "subscriptions": [
+      {
+        "subscription_id": "MRC_108_SUB_0",
+        "user_hash": "u_mrc_108_0",
+        "billing_interval": "monthly",
+        "trial_days": 7,
+        "start_date": "2025-08-01"
+      },
+      {
+        "subscription_id": "MRC_108_SUB_1",
+        "user_hash": "u_mrc_108_1",
+        "billing_interval": "monthly",
+        "trial_days": 14,
+        "start_date": "2025-08-01"
+      }
+    ],
+    "lifecycle_events": [
+      {
+        "subscription_id": "MRC_108_SUB_0",
+        "event_type": "price_change",
+        "timestamp": "2026-02-01T00:00:00.000Z",
+        "old_amount": 6.83,
+        "new_amount": 8.2,
+        "notification_sent": false,
+        "notification_method": "email",
+        "advance_notice_days": 30
+      },
+      {
+        "subscription_id": "MRC_108_SUB_1",
+        "event_type": "cancellation_requested",
+        "timestamp": "2026-06-01T00:00:00.000Z"
+      }
+    ],
+    "transactions": [
+      {
+        "transaction_id": "MRC_108_TXN_0_12",
+        "subscription_id": "MRC_108_SUB_0",
+        "user_hash": "u_mrc_108_0",
+        "amount_usd": 6.83,
+        "status": "success",
+        "attempt": 1,
+        "timestamp": "2025-08-01T00:00:00.000Z",
+        "descriptor": "RIDEPASS",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      },
+      {
+        "transaction_id": "MRC_108_TXN_0_10",
+        "subscription_id": "MRC_108_SUB_0",
+        "user_hash": "u_mrc_108_0",
+        "amount_usd": 6.83,
+        "status": "success",
+        "attempt": 1,
+        "timestamp": "2025-10-01T00:00:00.000Z",
+        "descriptor": "RIDEPASS",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      },
+      {
+        "transaction_id": "MRC_108_TXN_0_8",
+        "subscription_id": "MRC_108_SUB_0",
+        "user_hash": "u_mrc_108_0",
+        "amount_usd": 6.83,
+        "status": "success",
+        "attempt": 1,
+        "timestamp": "2025-12-01T00:00:00.000Z",
+        "descriptor": "RIDEPASS",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      },
+      {
+        "transaction_id": "MRC_108_TXN_0_6_F",
+        "subscription_id": "MRC_108_SUB_0",
+        "user_hash": "u_mrc_108_0",
+        "amount_usd": 8.2,
+        "status": "failed",
+        "attempt": 1,
+        "timestamp": "2026-02-01T00:00:00.000Z",
+        "descriptor": "RIDEPASS INC",
+        "failure_reason": "insufficient_funds",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      },
+      {
+        "transaction_id": "MRC_108_TXN_0_6_R0",
+        "subscription_id": "MRC_108_SUB_0",
+        "user_hash": "u_mrc_108_0",
+        "amount_usd": 8.2,
+        "status": "failed",
+        "attempt": 2,
+        "timestamp": "2026-02-04T00:00:00.000Z",
+        "descriptor": "RIDEPASS INC",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      },
+      {
+        "transaction_id": "MRC_108_TXN_0_6_R1",
+        "subscription_id": "MRC_108_SUB_0",
+        "user_hash": "u_mrc_108_0",
+        "amount_usd": 8.2,
+        "status": "success",
+        "attempt": 3,
+        "timestamp": "2026-02-07T00:00:00.000Z",
+        "descriptor": "RIDEPASS INC",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      },
+      {
+        "transaction_id": "MRC_108_TXN_0_4",
+        "subscription_id": "MRC_108_SUB_0",
+        "user_hash": "u_mrc_108_0",
+        "amount_usd": 8.2,
+        "status": "success",
+        "attempt": 1,
+        "timestamp": "2026-04-01T00:00:00.000Z",
+        "descriptor": "RIDEPASS INC",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      },
+      {
+        "transaction_id": "MRC_108_TXN_0_2",
+        "subscription_id": "MRC_108_SUB_0",
+        "user_hash": "u_mrc_108_0",
+        "amount_usd": 8.2,
+        "status": "success",
+        "attempt": 1,
+        "timestamp": "2026-06-01T00:00:00.000Z",
+        "descriptor": "RIDEPASS INC",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      },
+      {
+        "transaction_id": "MRC_108_TXN_1_12_F",
+        "subscription_id": "MRC_108_SUB_1",
+        "user_hash": "u_mrc_108_1",
+        "amount_usd": 6.83,
+        "status": "failed",
+        "attempt": 1,
+        "timestamp": "2025-08-01T00:00:00.000Z",
+        "descriptor": "RIDEPASS",
+        "failure_reason": "insufficient_funds",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      },
+      {
+        "transaction_id": "MRC_108_TXN_1_12_R0",
+        "subscription_id": "MRC_108_SUB_1",
+        "user_hash": "u_mrc_108_1",
+        "amount_usd": 6.83,
+        "status": "failed",
+        "attempt": 2,
+        "timestamp": "2025-08-04T00:00:00.000Z",
+        "descriptor": "RIDEPASS",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      },
+      {
+        "transaction_id": "MRC_108_TXN_1_12_R1",
+        "subscription_id": "MRC_108_SUB_1",
+        "user_hash": "u_mrc_108_1",
+        "amount_usd": 6.83,
+        "status": "success",
+        "attempt": 3,
+        "timestamp": "2025-08-07T00:00:00.000Z",
+        "descriptor": "RIDEPASS",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      },
+      {
+        "transaction_id": "MRC_108_TXN_1_10",
+        "subscription_id": "MRC_108_SUB_1",
+        "user_hash": "u_mrc_108_1",
+        "amount_usd": 6.83,
+        "status": "success",
+        "attempt": 1,
+        "timestamp": "2025-10-01T00:00:00.000Z",
+        "descriptor": "RIDEPASS",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      },
+      {
+        "transaction_id": "MRC_108_TXN_1_8",
+        "subscription_id": "MRC_108_SUB_1",
+        "user_hash": "u_mrc_108_1",
+        "amount_usd": 6.83,
+        "status": "success",
+        "attempt": 1,
+        "timestamp": "2025-12-01T00:00:00.000Z",
+        "descriptor": "RIDEPASS",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      },
+      {
+        "transaction_id": "MRC_108_TXN_1_6",
+        "subscription_id": "MRC_108_SUB_1",
+        "user_hash": "u_mrc_108_1",
+        "amount_usd": 8.2,
+        "status": "success",
+        "attempt": 1,
+        "timestamp": "2026-02-01T00:00:00.000Z",
+        "descriptor": "RIDEPASS INC",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      },
+      {
+        "transaction_id": "MRC_108_TXN_1_4",
+        "subscription_id": "MRC_108_SUB_1",
+        "user_hash": "u_mrc_108_1",
+        "amount_usd": 8.2,
+        "status": "success",
+        "attempt": 1,
+        "timestamp": "2026-04-01T00:00:00.000Z",
+        "descriptor": "RIDEPASS INC",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      },
+      {
+        "transaction_id": "MRC_108_TXN_1_2",
+        "subscription_id": "MRC_108_SUB_1",
+        "user_hash": "u_mrc_108_1",
+        "amount_usd": 8.2,
+        "status": "success",
+        "attempt": 1,
+        "timestamp": "2026-06-01T00:00:00.000Z",
+        "descriptor": "RIDEPASS INC",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      }
+    ],
+    "dispute_events": []
+  },
+  {
+    "merchant": {
+      "merchant_id": "MRC_109",
+      "merchant_name": "PetCare",
+      "legal_name": "PetCare Limited",
+      "country": "GB",
+      "category_code": "EDUCATION",
+      "first_seen_at": "2025-08-01T00:00:00.000Z",
+      "website_url": "https://example-petcare.test",
+      "customer_support_channels": [
+        "email",
+        "chat"
+      ]
+    },
+    "subscriptions": [
+      {
+        "subscription_id": "MRC_109_SUB_0",
+        "user_hash": "u_mrc_109_0",
+        "billing_interval": "monthly",
+        "trial_days": 14,
+        "start_date": "2025-08-01"
+      },
+      {
+        "subscription_id": "MRC_109_SUB_1",
+        "user_hash": "u_mrc_109_1",
+        "billing_interval": "monthly",
+        "trial_days": 0,
+        "start_date": "2025-08-01"
+      },
+      {
+        "subscription_id": "MRC_109_SUB_2",
+        "user_hash": "u_mrc_109_2",
+        "billing_interval": "monthly",
+        "trial_days": 0,
+        "start_date": "2025-08-01"
+      }
+    ],
+    "lifecycle_events": [
+      {
+        "subscription_id": "MRC_109_SUB_0",
+        "event_type": "price_change",
+        "timestamp": "2026-02-01T00:00:00.000Z",
+        "old_amount": 14.69,
+        "new_amount": 17.63,
+        "notification_sent": false,
+        "notification_method": "email",
+        "advance_notice_days": 30
+      },
+      {
+        "subscription_id": "MRC_109_SUB_1",
+        "event_type": "cancellation_requested",
+        "timestamp": "2026-06-01T00:00:00.000Z"
+      },
+      {
+        "subscription_id": "MRC_109_SUB_1",
+        "event_type": "cancellation_completed",
+        "timestamp": "2026-06-01T00:00:00.000Z"
+      }
+    ],
+    "transactions": [
+      {
+        "transaction_id": "MRC_109_TXN_0_12",
+        "subscription_id": "MRC_109_SUB_0",
+        "user_hash": "u_mrc_109_0",
+        "amount_usd": 14.69,
+        "status": "success",
+        "attempt": 1,
+        "timestamp": "2025-08-01T00:00:00.000Z",
+        "descriptor": "PETCARE",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      },
+      {
+        "transaction_id": "MRC_109_TXN_0_10",
+        "subscription_id": "MRC_109_SUB_0",
+        "user_hash": "u_mrc_109_0",
+        "amount_usd": 14.69,
+        "status": "success",
+        "attempt": 1,
+        "timestamp": "2025-10-01T00:00:00.000Z",
+        "descriptor": "PETCARE",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      },
+      {
+        "transaction_id": "MRC_109_TXN_0_8",
+        "subscription_id": "MRC_109_SUB_0",
+        "user_hash": "u_mrc_109_0",
+        "amount_usd": 14.69,
+        "status": "success",
+        "attempt": 1,
+        "timestamp": "2025-12-01T00:00:00.000Z",
+        "descriptor": "PETCARE",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      },
+      {
+        "transaction_id": "MRC_109_TXN_0_6",
+        "subscription_id": "MRC_109_SUB_0",
+        "user_hash": "u_mrc_109_0",
+        "amount_usd": 17.63,
+        "status": "success",
+        "attempt": 1,
+        "timestamp": "2026-02-01T00:00:00.000Z",
+        "descriptor": "PETCARE INC",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      },
+      {
+        "transaction_id": "MRC_109_TXN_0_4",
+        "subscription_id": "MRC_109_SUB_0",
+        "user_hash": "u_mrc_109_0",
+        "amount_usd": 17.63,
+        "status": "success",
+        "attempt": 1,
+        "timestamp": "2026-04-01T00:00:00.000Z",
+        "descriptor": "PETCARE INC",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      },
+      {
+        "transaction_id": "MRC_109_TXN_0_2",
+        "subscription_id": "MRC_109_SUB_0",
+        "user_hash": "u_mrc_109_0",
+        "amount_usd": 17.63,
+        "status": "success",
+        "attempt": 1,
+        "timestamp": "2026-06-01T00:00:00.000Z",
+        "descriptor": "PETCARE INC",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      },
+      {
+        "transaction_id": "MRC_109_TXN_1_12",
+        "subscription_id": "MRC_109_SUB_1",
+        "user_hash": "u_mrc_109_1",
+        "amount_usd": 14.69,
+        "status": "success",
+        "attempt": 1,
+        "timestamp": "2025-08-01T00:00:00.000Z",
+        "descriptor": "PETCARE",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      },
+      {
+        "transaction_id": "MRC_109_TXN_1_10_F",
+        "subscription_id": "MRC_109_SUB_1",
+        "user_hash": "u_mrc_109_1",
+        "amount_usd": 14.69,
+        "status": "failed",
+        "attempt": 1,
+        "timestamp": "2025-10-01T00:00:00.000Z",
+        "descriptor": "PETCARE",
+        "failure_reason": "insufficient_funds",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      },
+      {
+        "transaction_id": "MRC_109_TXN_1_10_R0",
+        "subscription_id": "MRC_109_SUB_1",
+        "user_hash": "u_mrc_109_1",
+        "amount_usd": 14.69,
+        "status": "failed",
+        "attempt": 2,
+        "timestamp": "2025-10-04T00:00:00.000Z",
+        "descriptor": "PETCARE",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      },
+      {
+        "transaction_id": "MRC_109_TXN_1_10_R1",
+        "subscription_id": "MRC_109_SUB_1",
+        "user_hash": "u_mrc_109_1",
+        "amount_usd": 14.69,
+        "status": "success",
+        "attempt": 3,
+        "timestamp": "2025-10-07T00:00:00.000Z",
+        "descriptor": "PETCARE",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      },
+      {
+        "transaction_id": "MRC_109_TXN_1_8",
+        "subscription_id": "MRC_109_SUB_1",
+        "user_hash": "u_mrc_109_1",
+        "amount_usd": 14.69,
+        "status": "success",
+        "attempt": 1,
+        "timestamp": "2025-12-01T00:00:00.000Z",
+        "descriptor": "PETCARE",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      },
+      {
+        "transaction_id": "MRC_109_TXN_1_6",
+        "subscription_id": "MRC_109_SUB_1",
+        "user_hash": "u_mrc_109_1",
+        "amount_usd": 17.63,
+        "status": "success",
+        "attempt": 1,
+        "timestamp": "2026-02-01T00:00:00.000Z",
+        "descriptor": "PETCARE INC",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      },
+      {
+        "transaction_id": "MRC_109_TXN_1_4",
+        "subscription_id": "MRC_109_SUB_1",
+        "user_hash": "u_mrc_109_1",
+        "amount_usd": 17.63,
+        "status": "success",
+        "attempt": 1,
+        "timestamp": "2026-04-01T00:00:00.000Z",
+        "descriptor": "PETCARE INC",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      },
+      {
+        "transaction_id": "MRC_109_TXN_1_2",
+        "subscription_id": "MRC_109_SUB_1",
+        "user_hash": "u_mrc_109_1",
+        "amount_usd": 17.63,
+        "status": "success",
+        "attempt": 1,
+        "timestamp": "2026-06-01T00:00:00.000Z",
+        "descriptor": "PETCARE INC",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      },
+      {
+        "transaction_id": "MRC_109_TXN_2_12",
+        "subscription_id": "MRC_109_SUB_2",
+        "user_hash": "u_mrc_109_2",
+        "amount_usd": 14.69,
+        "status": "success",
+        "attempt": 1,
+        "timestamp": "2025-08-01T00:00:00.000Z",
+        "descriptor": "PETCARE",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      },
+      {
+        "transaction_id": "MRC_109_TXN_2_10",
+        "subscription_id": "MRC_109_SUB_2",
+        "user_hash": "u_mrc_109_2",
+        "amount_usd": 14.69,
+        "status": "success",
+        "attempt": 1,
+        "timestamp": "2025-10-01T00:00:00.000Z",
+        "descriptor": "PETCARE",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      },
+      {
+        "transaction_id": "MRC_109_TXN_2_8_F",
+        "subscription_id": "MRC_109_SUB_2",
+        "user_hash": "u_mrc_109_2",
+        "amount_usd": 14.69,
+        "status": "failed",
+        "attempt": 1,
+        "timestamp": "2025-12-01T00:00:00.000Z",
+        "descriptor": "PETCARE",
+        "failure_reason": "insufficient_funds",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      },
+      {
+        "transaction_id": "MRC_109_TXN_2_8_R0",
+        "subscription_id": "MRC_109_SUB_2",
+        "user_hash": "u_mrc_109_2",
+        "amount_usd": 14.69,
+        "status": "failed",
+        "attempt": 2,
+        "timestamp": "2025-12-04T00:00:00.000Z",
+        "descriptor": "PETCARE",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      },
+      {
+        "transaction_id": "MRC_109_TXN_2_8_R1",
+        "subscription_id": "MRC_109_SUB_2",
+        "user_hash": "u_mrc_109_2",
+        "amount_usd": 14.69,
+        "status": "success",
+        "attempt": 3,
+        "timestamp": "2025-12-07T00:00:00.000Z",
+        "descriptor": "PETCARE",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      },
+      {
+        "transaction_id": "MRC_109_TXN_2_6",
+        "subscription_id": "MRC_109_SUB_2",
+        "user_hash": "u_mrc_109_2",
+        "amount_usd": 17.63,
+        "status": "success",
+        "attempt": 1,
+        "timestamp": "2026-02-01T00:00:00.000Z",
+        "descriptor": "PETCARE INC",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      },
+      {
+        "transaction_id": "MRC_109_TXN_2_4",
+        "subscription_id": "MRC_109_SUB_2",
+        "user_hash": "u_mrc_109_2",
+        "amount_usd": 17.63,
+        "status": "success",
+        "attempt": 1,
+        "timestamp": "2026-04-01T00:00:00.000Z",
+        "descriptor": "PETCARE INC",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      },
+      {
+        "transaction_id": "MRC_109_TXN_2_2",
+        "subscription_id": "MRC_109_SUB_2",
+        "user_hash": "u_mrc_109_2",
+        "amount_usd": 17.63,
+        "status": "success",
+        "attempt": 1,
+        "timestamp": "2026-06-01T00:00:00.000Z",
+        "descriptor": "PETCARE INC",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      }
+    ],
+    "dispute_events": []
+  },
+  {
+    "merchant": {
+      "merchant_id": "MRC_110",
+      "merchant_name": "SkyDrive",
+      "legal_name": "SkyDrive Limited",
+      "country": "US",
+      "category_code": "FITNESS",
+      "first_seen_at": "2025-08-01T00:00:00.000Z",
+      "website_url": "https://example-skydrive.test",
+      "customer_support_channels": [
+        "email",
+        "chat"
+      ]
+    },
+    "subscriptions": [
+      {
+        "subscription_id": "MRC_110_SUB_0",
+        "user_hash": "u_mrc_110_0",
+        "billing_interval": "monthly",
+        "trial_days": 7,
+        "start_date": "2025-08-01"
+      },
+      {
+        "subscription_id": "MRC_110_SUB_1",
+        "user_hash": "u_mrc_110_1",
+        "billing_interval": "monthly",
+        "trial_days": 0,
+        "start_date": "2025-08-01"
+      },
+      {
+        "subscription_id": "MRC_110_SUB_2",
+        "user_hash": "u_mrc_110_2",
+        "billing_interval": "monthly",
+        "trial_days": 7,
+        "start_date": "2025-08-01"
+      }
+    ],
+    "lifecycle_events": [
+      {
+        "subscription_id": "MRC_110_SUB_0",
+        "event_type": "price_change",
+        "timestamp": "2026-02-01T00:00:00.000Z",
+        "old_amount": 5.17,
+        "new_amount": 6.2,
+        "notification_sent": false,
+        "notification_method": "email",
+        "advance_notice_days": 30
+      },
+      {
+        "subscription_id": "MRC_110_SUB_0",
+        "event_type": "price_change",
+        "timestamp": "2026-02-01T00:00:00.000Z",
+        "old_amount": 6.2,
+        "new_amount": 7.44,
+        "notification_sent": false,
+        "notification_method": "email",
+        "advance_notice_days": 30
+      },
+      {
+        "subscription_id": "MRC_110_SUB_1",
+        "event_type": "cancellation_requested",
+        "timestamp": "2026-06-01T00:00:00.000Z"
+      }
+    ],
+    "transactions": [
+      {
+        "transaction_id": "MRC_110_TXN_0_12_F",
+        "subscription_id": "MRC_110_SUB_0",
+        "user_hash": "u_mrc_110_0",
+        "amount_usd": 5.17,
+        "status": "failed",
+        "attempt": 1,
+        "timestamp": "2025-08-01T00:00:00.000Z",
+        "descriptor": "SKYDRIVE",
+        "failure_reason": "insufficient_funds",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      },
+      {
+        "transaction_id": "MRC_110_TXN_0_12_R0",
+        "subscription_id": "MRC_110_SUB_0",
+        "user_hash": "u_mrc_110_0",
+        "amount_usd": 5.17,
+        "status": "failed",
+        "attempt": 2,
+        "timestamp": "2025-08-04T00:00:00.000Z",
+        "descriptor": "SKYDRIVE",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      },
+      {
+        "transaction_id": "MRC_110_TXN_0_12_R1",
+        "subscription_id": "MRC_110_SUB_0",
+        "user_hash": "u_mrc_110_0",
+        "amount_usd": 5.17,
+        "status": "failed",
+        "attempt": 3,
+        "timestamp": "2025-08-07T00:00:00.000Z",
+        "descriptor": "SKYDRIVE",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      },
+      {
+        "transaction_id": "MRC_110_TXN_0_12_R2",
+        "subscription_id": "MRC_110_SUB_0",
+        "user_hash": "u_mrc_110_0",
+        "amount_usd": 5.17,
+        "status": "success",
+        "attempt": 4,
+        "timestamp": "2025-08-10T00:00:00.000Z",
+        "descriptor": "SKYDRIVE",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      },
+      {
+        "transaction_id": "MRC_110_TXN_0_10",
+        "subscription_id": "MRC_110_SUB_0",
+        "user_hash": "u_mrc_110_0",
+        "amount_usd": 5.17,
+        "status": "success",
+        "attempt": 1,
+        "timestamp": "2025-10-01T00:00:00.000Z",
+        "descriptor": "SKYDRIVE",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      },
+      {
+        "transaction_id": "MRC_110_TXN_0_8",
+        "subscription_id": "MRC_110_SUB_0",
+        "user_hash": "u_mrc_110_0",
+        "amount_usd": 6.2,
+        "status": "success",
+        "attempt": 1,
+        "timestamp": "2025-12-01T00:00:00.000Z",
+        "descriptor": "SKYDRIVE INC",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      },
+      {
+        "transaction_id": "MRC_110_TXN_0_6",
+        "subscription_id": "MRC_110_SUB_0",
+        "user_hash": "u_mrc_110_0",
+        "amount_usd": 6.2,
+        "status": "success",
+        "attempt": 1,
+        "timestamp": "2026-02-01T00:00:00.000Z",
+        "descriptor": "SKYDRIVE INC",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      },
+      {
+        "transaction_id": "MRC_110_TXN_0_4",
+        "subscription_id": "MRC_110_SUB_0",
+        "user_hash": "u_mrc_110_0",
+        "amount_usd": 7.44,
+        "status": "success",
+        "attempt": 1,
+        "timestamp": "2026-04-01T00:00:00.000Z",
+        "descriptor": "SKYD*SUB",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      },
+      {
+        "transaction_id": "MRC_110_TXN_0_2",
+        "subscription_id": "MRC_110_SUB_0",
+        "user_hash": "u_mrc_110_0",
+        "amount_usd": 7.44,
+        "status": "success",
+        "attempt": 1,
+        "timestamp": "2026-06-01T00:00:00.000Z",
+        "descriptor": "SKYD*SUB",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      },
+      {
+        "transaction_id": "MRC_110_TXN_1_12",
+        "subscription_id": "MRC_110_SUB_1",
+        "user_hash": "u_mrc_110_1",
+        "amount_usd": 5.17,
+        "status": "success",
+        "attempt": 1,
+        "timestamp": "2025-08-01T00:00:00.000Z",
+        "descriptor": "SKYDRIVE",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      },
+      {
+        "transaction_id": "MRC_110_TXN_1_10",
+        "subscription_id": "MRC_110_SUB_1",
+        "user_hash": "u_mrc_110_1",
+        "amount_usd": 5.17,
+        "status": "success",
+        "attempt": 1,
+        "timestamp": "2025-10-01T00:00:00.000Z",
+        "descriptor": "SKYDRIVE",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      },
+      {
+        "transaction_id": "MRC_110_TXN_1_8",
+        "subscription_id": "MRC_110_SUB_1",
+        "user_hash": "u_mrc_110_1",
+        "amount_usd": 6.2,
+        "status": "success",
+        "attempt": 1,
+        "timestamp": "2025-12-01T00:00:00.000Z",
+        "descriptor": "SKYDRIVE INC",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      },
+      {
+        "transaction_id": "MRC_110_TXN_1_6",
+        "subscription_id": "MRC_110_SUB_1",
+        "user_hash": "u_mrc_110_1",
+        "amount_usd": 6.2,
+        "status": "success",
+        "attempt": 1,
+        "timestamp": "2026-02-01T00:00:00.000Z",
+        "descriptor": "SKYDRIVE INC",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      },
+      {
+        "transaction_id": "MRC_110_TXN_1_4_F",
+        "subscription_id": "MRC_110_SUB_1",
+        "user_hash": "u_mrc_110_1",
+        "amount_usd": 7.44,
+        "status": "failed",
+        "attempt": 1,
+        "timestamp": "2026-04-01T00:00:00.000Z",
+        "descriptor": "SKYD*SUB",
+        "failure_reason": "insufficient_funds",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      },
+      {
+        "transaction_id": "MRC_110_TXN_1_4_R0",
+        "subscription_id": "MRC_110_SUB_1",
+        "user_hash": "u_mrc_110_1",
+        "amount_usd": 7.44,
+        "status": "failed",
+        "attempt": 2,
+        "timestamp": "2026-04-04T00:00:00.000Z",
+        "descriptor": "SKYD*SUB",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      },
+      {
+        "transaction_id": "MRC_110_TXN_1_4_R1",
+        "subscription_id": "MRC_110_SUB_1",
+        "user_hash": "u_mrc_110_1",
+        "amount_usd": 7.44,
+        "status": "failed",
+        "attempt": 3,
+        "timestamp": "2026-04-07T00:00:00.000Z",
+        "descriptor": "SKYD*SUB",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      },
+      {
+        "transaction_id": "MRC_110_TXN_1_4_R2",
+        "subscription_id": "MRC_110_SUB_1",
+        "user_hash": "u_mrc_110_1",
+        "amount_usd": 7.44,
+        "status": "success",
+        "attempt": 4,
+        "timestamp": "2026-04-10T00:00:00.000Z",
+        "descriptor": "SKYD*SUB",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      },
+      {
+        "transaction_id": "MRC_110_TXN_1_2",
+        "subscription_id": "MRC_110_SUB_1",
+        "user_hash": "u_mrc_110_1",
+        "amount_usd": 7.44,
+        "status": "success",
+        "attempt": 1,
+        "timestamp": "2026-06-01T00:00:00.000Z",
+        "descriptor": "SKYD*SUB",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      },
+      {
+        "transaction_id": "MRC_110_TXN_2_12",
+        "subscription_id": "MRC_110_SUB_2",
+        "user_hash": "u_mrc_110_2",
+        "amount_usd": 5.17,
+        "status": "success",
+        "attempt": 1,
+        "timestamp": "2025-08-01T00:00:00.000Z",
+        "descriptor": "SKYDRIVE",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      },
+      {
+        "transaction_id": "MRC_110_TXN_2_10_F",
+        "subscription_id": "MRC_110_SUB_2",
+        "user_hash": "u_mrc_110_2",
+        "amount_usd": 5.17,
+        "status": "failed",
+        "attempt": 1,
+        "timestamp": "2025-10-01T00:00:00.000Z",
+        "descriptor": "SKYDRIVE",
+        "failure_reason": "insufficient_funds",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      },
+      {
+        "transaction_id": "MRC_110_TXN_2_10_R0",
+        "subscription_id": "MRC_110_SUB_2",
+        "user_hash": "u_mrc_110_2",
+        "amount_usd": 5.17,
+        "status": "failed",
+        "attempt": 2,
+        "timestamp": "2025-10-04T00:00:00.000Z",
+        "descriptor": "SKYDRIVE",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      },
+      {
+        "transaction_id": "MRC_110_TXN_2_10_R1",
+        "subscription_id": "MRC_110_SUB_2",
+        "user_hash": "u_mrc_110_2",
+        "amount_usd": 5.17,
+        "status": "failed",
+        "attempt": 3,
+        "timestamp": "2025-10-07T00:00:00.000Z",
+        "descriptor": "SKYDRIVE",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      },
+      {
+        "transaction_id": "MRC_110_TXN_2_10_R2",
+        "subscription_id": "MRC_110_SUB_2",
+        "user_hash": "u_mrc_110_2",
+        "amount_usd": 5.17,
+        "status": "success",
+        "attempt": 4,
+        "timestamp": "2025-10-10T00:00:00.000Z",
+        "descriptor": "SKYDRIVE",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      },
+      {
+        "transaction_id": "MRC_110_TXN_2_8",
+        "subscription_id": "MRC_110_SUB_2",
+        "user_hash": "u_mrc_110_2",
+        "amount_usd": 6.2,
+        "status": "success",
+        "attempt": 1,
+        "timestamp": "2025-12-01T00:00:00.000Z",
+        "descriptor": "SKYDRIVE INC",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      },
+      {
+        "transaction_id": "MRC_110_TXN_2_6",
+        "subscription_id": "MRC_110_SUB_2",
+        "user_hash": "u_mrc_110_2",
+        "amount_usd": 6.2,
+        "status": "success",
+        "attempt": 1,
+        "timestamp": "2026-02-01T00:00:00.000Z",
+        "descriptor": "SKYDRIVE INC",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      },
+      {
+        "transaction_id": "MRC_110_TXN_2_4_F",
+        "subscription_id": "MRC_110_SUB_2",
+        "user_hash": "u_mrc_110_2",
+        "amount_usd": 7.44,
+        "status": "failed",
+        "attempt": 1,
+        "timestamp": "2026-04-01T00:00:00.000Z",
+        "descriptor": "SKYD*SUB",
+        "failure_reason": "insufficient_funds",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      },
+      {
+        "transaction_id": "MRC_110_TXN_2_4_R0",
+        "subscription_id": "MRC_110_SUB_2",
+        "user_hash": "u_mrc_110_2",
+        "amount_usd": 7.44,
+        "status": "failed",
+        "attempt": 2,
+        "timestamp": "2026-04-04T00:00:00.000Z",
+        "descriptor": "SKYD*SUB",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      },
+      {
+        "transaction_id": "MRC_110_TXN_2_4_R1",
+        "subscription_id": "MRC_110_SUB_2",
+        "user_hash": "u_mrc_110_2",
+        "amount_usd": 7.44,
+        "status": "failed",
+        "attempt": 3,
+        "timestamp": "2026-04-07T00:00:00.000Z",
+        "descriptor": "SKYD*SUB",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      },
+      {
+        "transaction_id": "MRC_110_TXN_2_4_R2",
+        "subscription_id": "MRC_110_SUB_2",
+        "user_hash": "u_mrc_110_2",
+        "amount_usd": 7.44,
+        "status": "success",
+        "attempt": 4,
+        "timestamp": "2026-04-10T00:00:00.000Z",
+        "descriptor": "SKYD*SUB",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      },
+      {
+        "transaction_id": "MRC_110_TXN_2_2",
+        "subscription_id": "MRC_110_SUB_2",
+        "user_hash": "u_mrc_110_2",
+        "amount_usd": 7.44,
+        "status": "success",
+        "attempt": 1,
+        "timestamp": "2026-06-01T00:00:00.000Z",
+        "descriptor": "SKYD*SUB",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      }
+    ],
+    "dispute_events": []
+  },
+  {
+    "merchant": {
+      "merchant_id": "MRC_111",
+      "merchant_name": "TuneRoom",
+      "legal_name": "TuneRoom Limited",
+      "country": "GB",
+      "category_code": "EDUCATION",
+      "first_seen_at": "2025-08-01T00:00:00.000Z",
+      "website_url": "https://example-tuneroom.test",
+      "customer_support_channels": [
+        "email",
+        "chat"
+      ]
+    },
+    "subscriptions": [
+      {
+        "subscription_id": "MRC_111_SUB_0",
+        "user_hash": "u_mrc_111_0",
+        "billing_interval": "monthly",
+        "trial_days": 7,
+        "start_date": "2025-08-01"
+      },
+      {
+        "subscription_id": "MRC_111_SUB_1",
+        "user_hash": "u_mrc_111_1",
+        "billing_interval": "monthly",
+        "trial_days": 14,
+        "start_date": "2025-08-01"
+      },
+      {
+        "subscription_id": "MRC_111_SUB_2",
+        "user_hash": "u_mrc_111_2",
+        "billing_interval": "monthly",
+        "trial_days": 7,
+        "start_date": "2025-08-01"
+      }
+    ],
+    "lifecycle_events": [
+      {
+        "subscription_id": "MRC_111_SUB_0",
+        "event_type": "price_change",
+        "timestamp": "2026-02-01T00:00:00.000Z",
+        "old_amount": 13.79,
+        "new_amount": 16.55,
+        "notification_sent": false,
+        "notification_method": "email",
+        "advance_notice_days": 30
+      },
+      {
+        "subscription_id": "MRC_111_SUB_0",
+        "event_type": "price_change",
+        "timestamp": "2026-02-01T00:00:00.000Z",
+        "old_amount": 16.55,
+        "new_amount": 19.86,
+        "notification_sent": false,
+        "notification_method": "email",
+        "advance_notice_days": 30
+      },
+      {
+        "subscription_id": "MRC_111_SUB_1",
+        "event_type": "cancellation_requested",
+        "timestamp": "2026-06-01T00:00:00.000Z"
+      }
+    ],
+    "transactions": [
+      {
+        "transaction_id": "MRC_111_TXN_0_12",
+        "subscription_id": "MRC_111_SUB_0",
+        "user_hash": "u_mrc_111_0",
+        "amount_usd": 13.79,
+        "status": "success",
+        "attempt": 1,
+        "timestamp": "2025-08-01T00:00:00.000Z",
+        "descriptor": "TUNEROOM",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      },
+      {
+        "transaction_id": "MRC_111_TXN_0_10",
+        "subscription_id": "MRC_111_SUB_0",
+        "user_hash": "u_mrc_111_0",
+        "amount_usd": 13.79,
+        "status": "success",
+        "attempt": 1,
+        "timestamp": "2025-10-01T00:00:00.000Z",
+        "descriptor": "TUNEROOM",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      },
+      {
+        "transaction_id": "MRC_111_TXN_0_8",
+        "subscription_id": "MRC_111_SUB_0",
+        "user_hash": "u_mrc_111_0",
+        "amount_usd": 16.55,
+        "status": "success",
+        "attempt": 1,
+        "timestamp": "2025-12-01T00:00:00.000Z",
+        "descriptor": "TUNEROOM INC",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      },
+      {
+        "transaction_id": "MRC_111_TXN_0_6",
+        "subscription_id": "MRC_111_SUB_0",
+        "user_hash": "u_mrc_111_0",
+        "amount_usd": 16.55,
+        "status": "success",
+        "attempt": 1,
+        "timestamp": "2026-02-01T00:00:00.000Z",
+        "descriptor": "TUNEROOM INC",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      },
+      {
+        "transaction_id": "MRC_111_TXN_0_4",
+        "subscription_id": "MRC_111_SUB_0",
+        "user_hash": "u_mrc_111_0",
+        "amount_usd": 19.86,
+        "status": "success",
+        "attempt": 1,
+        "timestamp": "2026-04-01T00:00:00.000Z",
+        "descriptor": "TUNE*SUB",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      },
+      {
+        "transaction_id": "MRC_111_TXN_0_2",
+        "subscription_id": "MRC_111_SUB_0",
+        "user_hash": "u_mrc_111_0",
+        "amount_usd": 19.86,
+        "status": "success",
+        "attempt": 1,
+        "timestamp": "2026-06-01T00:00:00.000Z",
+        "descriptor": "TUNE*SUB",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      },
+      {
+        "transaction_id": "MRC_111_TXN_1_12",
+        "subscription_id": "MRC_111_SUB_1",
+        "user_hash": "u_mrc_111_1",
+        "amount_usd": 13.79,
+        "status": "success",
+        "attempt": 1,
+        "timestamp": "2025-08-01T00:00:00.000Z",
+        "descriptor": "TUNEROOM",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      },
+      {
+        "transaction_id": "MRC_111_TXN_1_10",
+        "subscription_id": "MRC_111_SUB_1",
+        "user_hash": "u_mrc_111_1",
+        "amount_usd": 13.79,
+        "status": "success",
+        "attempt": 1,
+        "timestamp": "2025-10-01T00:00:00.000Z",
+        "descriptor": "TUNEROOM",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      },
+      {
+        "transaction_id": "MRC_111_TXN_1_8",
+        "subscription_id": "MRC_111_SUB_1",
+        "user_hash": "u_mrc_111_1",
+        "amount_usd": 16.55,
+        "status": "success",
+        "attempt": 1,
+        "timestamp": "2025-12-01T00:00:00.000Z",
+        "descriptor": "TUNEROOM INC",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      },
+      {
+        "transaction_id": "MRC_111_TXN_1_6",
+        "subscription_id": "MRC_111_SUB_1",
+        "user_hash": "u_mrc_111_1",
+        "amount_usd": 16.55,
+        "status": "success",
+        "attempt": 1,
+        "timestamp": "2026-02-01T00:00:00.000Z",
+        "descriptor": "TUNEROOM INC",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      },
+      {
+        "transaction_id": "MRC_111_TXN_1_4",
+        "subscription_id": "MRC_111_SUB_1",
+        "user_hash": "u_mrc_111_1",
+        "amount_usd": 19.86,
+        "status": "success",
+        "attempt": 1,
+        "timestamp": "2026-04-01T00:00:00.000Z",
+        "descriptor": "TUNE*SUB",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      },
+      {
+        "transaction_id": "MRC_111_TXN_1_2",
+        "subscription_id": "MRC_111_SUB_1",
+        "user_hash": "u_mrc_111_1",
+        "amount_usd": 19.86,
+        "status": "success",
+        "attempt": 1,
+        "timestamp": "2026-06-01T00:00:00.000Z",
+        "descriptor": "TUNE*SUB",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      },
+      {
+        "transaction_id": "MRC_111_TXN_2_12",
+        "subscription_id": "MRC_111_SUB_2",
+        "user_hash": "u_mrc_111_2",
+        "amount_usd": 13.79,
+        "status": "success",
+        "attempt": 1,
+        "timestamp": "2025-08-01T00:00:00.000Z",
+        "descriptor": "TUNEROOM",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      },
+      {
+        "transaction_id": "MRC_111_TXN_2_10",
+        "subscription_id": "MRC_111_SUB_2",
+        "user_hash": "u_mrc_111_2",
+        "amount_usd": 13.79,
+        "status": "success",
+        "attempt": 1,
+        "timestamp": "2025-10-01T00:00:00.000Z",
+        "descriptor": "TUNEROOM",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      },
+      {
+        "transaction_id": "MRC_111_TXN_2_8",
+        "subscription_id": "MRC_111_SUB_2",
+        "user_hash": "u_mrc_111_2",
+        "amount_usd": 16.55,
+        "status": "success",
+        "attempt": 1,
+        "timestamp": "2025-12-01T00:00:00.000Z",
+        "descriptor": "TUNEROOM INC",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      },
+      {
+        "transaction_id": "MRC_111_TXN_2_6",
+        "subscription_id": "MRC_111_SUB_2",
+        "user_hash": "u_mrc_111_2",
+        "amount_usd": 16.55,
+        "status": "success",
+        "attempt": 1,
+        "timestamp": "2026-02-01T00:00:00.000Z",
+        "descriptor": "TUNEROOM INC",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      },
+      {
+        "transaction_id": "MRC_111_TXN_2_4",
+        "subscription_id": "MRC_111_SUB_2",
+        "user_hash": "u_mrc_111_2",
+        "amount_usd": 19.86,
+        "status": "success",
+        "attempt": 1,
+        "timestamp": "2026-04-01T00:00:00.000Z",
+        "descriptor": "TUNE*SUB",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      },
+      {
+        "transaction_id": "MRC_111_TXN_2_2",
+        "subscription_id": "MRC_111_SUB_2",
+        "user_hash": "u_mrc_111_2",
+        "amount_usd": 19.86,
+        "status": "success",
+        "attempt": 1,
+        "timestamp": "2026-06-01T00:00:00.000Z",
+        "descriptor": "TUNE*SUB",
+        "payment_method_type": "card",
+        "card_bin": "424242",
+        "risk_signals": {
+          "cvv_match": true,
+          "avs_match": "FULL",
+          "ip_country": "US",
+          "card_country": "US"
+        }
+      }
+    ],
+    "dispute_events": []
+  }
+]
