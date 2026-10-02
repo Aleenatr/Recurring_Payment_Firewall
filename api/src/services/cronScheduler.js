@@ -1,155 +1,205 @@
 import cron from 'node-cron';
 import { CleanedData, MerchantAnalysis, ApiResponse } from '../models/MerchantAnalysis.js';
 import extractSignals from '../ingestion/analysis/extractSignals.js';
-import performKMeansClustering from '../ingestion/analysis/kmeansAnalysis.js';
-import performDBSCANClustering from '../ingestion/analysis/dbscanAnalysis.js';
+import { performKMeansClustering } from '../ingestion/analysis/kmeansAnalysis.js';
+import { performDBSCANClustering } from '../ingestion/analysis/dbscanAnalysis.js';
 import generateMerchantScore from '../ingestion/analysis/merchantScoring.js';
 import generateApiResponse from '../ingestion/controller/generateApiResponse.js';
- 
+
+/**
+ * ============================ WHY THIS JOB EXISTS ============================
+ * Not for freshness. The stored data does not go stale on its own.
+ *
+ * It exists because CLUSTERING AND OUTLIER DETECTION ARE POPULATION-LEVEL
+ * OPERATIONS AND SCORING IS RELATIVE. k-means partitions ALL merchants into k
+ * groups. DBSCAN calls a merchant an outlier relative to the density of its
+ * NEIGHBOURS. Neither is defined for one merchant in isolation — which is
+ * exactly why runKMeans() and runDBSCAN() return deferred placeholders on the
+ * single-merchant ingest path.
+ *
+ * The moment a new merchant is ingested, every existing merchant's cluster
+ * membership and outlier status is potentially stale. This job is where those
+ * two things become real numbers.
+ * ============================================================================
+ *
+ * REWRITTEN 14 Aug 2026. What was wrong before:
+ *
+ * The old snapshot object wrote merchant.id, cleanedData, signals.coreSignals,
+ * kmeansAnalysis, dbscanAnalysis and trustScore. NOT ONE of those is a path in
+ * merchantAnalysisSchema (models:125-231), and Mongoose schemas are strict by
+ * default — unknown fields are SILENTLY STRIPPED on write.
+ *
+ * So this job ran every six hours, logged a tick per merchant, and wrote
+ * essentially empty documents. It failed silently and reported success. It also
+ * called generateMerchantScore with its 2nd and 4th arguments swapped relative
+ * to merchantProcessor.js:35, and generateApiResponse with a completely
+ * different argument shape.
+ *
+ * Both callers now use the same contract — the one the schema agrees with.
+ */
+
 export async function reprocessAllMerchants() {
    const startTime = Date.now();
-   
-   try { 
+
+   try {
+      console.log('\n[1] Loading merchants...');
+      // Field names must match cleanedDataSchema exactly. The previous version
+      // selected camelCase names (subscriptionCount, aggregatedMetrics) that do
+      // not exist on this schema, so it silently fetched documents with the
+      // aggregated metrics missing — and every downstream signal read undefined.
       const allMerchants = await CleanedData.find({})
-         .select('merchant subscriptionCount userCount aggregatedMetrics subscriptions transactions metadata')
+         .select('merchant subscriptions transactions lifecycle_events dispute_events aggregated_metrics processed_at')
          .lean();
-      
+
       if (allMerchants.length === 0) {
-         return {
-            success: true,
-            message: 'No merchants to process',
-            processed: 0
-         };
+         return { success: true, message: 'No merchants to process', processed: 0 };
       }
-      
+
       console.log(`   Found ${allMerchants.length} merchants`);
-        
-      const allSignals = allMerchants.map(merchant => {
-         const signals = extractSignals(merchant);
-         return {
-            merchantId: merchant.merchant.merchant_id,
-            merchantName: merchant.merchant.merchant_name,
-            cleanData: merchant,
-            signals
-         };
-      });
-       
+
+      console.log('\n[2] Extracting signals...');
+      const allSignals = allMerchants.map(merchant => ({
+         merchantId: merchant.merchant.merchant_id,
+         merchantName: merchant.merchant.merchant_name,
+         cleanData: merchant,
+         signals: extractSignals(merchant)
+      }));
+
+      console.log('\n[3] Running K-Means clustering...');
+      // k = min(3, n). Three because the product reasons in three archetypes
+      // (ABUSIVE / AGGRESSIVE / NORMAL), and you can never have more clusters
+      // than points.
       const kmeansResult = performKMeansClustering(
          allSignals.map(m => m.signals),
-         Math.min(3, allSignals.length)  
+         Math.min(3, allSignals.length)
       );
-      
-      console.log(`   Clustered into ${kmeansResult.clusters.length} groups`);
-      
+      console.log(`   ${kmeansResult.note}`);
+
       console.log('\n[4] Running DBSCAN outlier detection...');
+      // eps = 0.3, minPts = 2. eps is a radius in the 6-D unit cube whose full
+      // diagonal is ~2.449, so 0.3 is a genuinely tight neighbourhood. minPts=2
+      // is the smallest value that means anything: "at least one other merchant
+      // behaves like you".
       const dbscanResult = performDBSCANClustering(
          allSignals.map(m => m.signals),
          0.3,
          2
       );
-      
-      console.log(`   Identified ${dbscanResult.outliers?.length || 0} outliers`);
-       
+      console.log(`   Identified ${dbscanResult.outliers.length} outliers`);
+
       console.log('\n[5] Updating merchant analyses...');
       let updated = 0;
       let failed = 0;
-      
+
       for (let i = 0; i < allSignals.length; i++) {
          const merchantData = allSignals[i];
-         const merchantIndex = i;
-         
-         try { 
-            const merchantKmeansResult = {
-               assignedCluster: kmeansResult.merchantAssignments[merchantIndex],
-               note: kmeansResult.note || "Batch analysis"
-            };
-            
-            // Calculate trust score
-            const merchantScore = generateMerchantScore(
+
+         try {
+            // Per-merchant slices of the two population results. Both arrays are
+            // parallel to allSignals, so the index is the join key.
+            const merchantDbscan = dbscanResult.perMerchant[i];
+            const merchantKmeans = kmeansResult.merchantAssignments[i];
+
+            // SAME ARGUMENT ORDER AS merchantProcessor.js:35. This is the fix.
+            const scoringResult = generateMerchantScore(
                merchantData.cleanData,
-               merchantKmeansResult,
-               dbscanResult,
                merchantData.signals,
-               merchantIndex
+               merchantDbscan,
+               merchantKmeans
             );
-            
-            // Generate snapshot
+
+            const times = merchantData.cleanData.transactions
+               .map(t => new Date(t.timestamp).getTime())
+               .filter(t => Number.isFinite(t));
+            const toDay = (ms) => new Date(ms).toISOString().split('T')[0];
+
+            // Schema-shaped. Identical structure to merchantProcessor.js:50-77,
+            // because both write the same collection.
             const snapshot = {
-               timestamp: new Date().toISOString(),
-               merchant: {
-                  id: merchantData.merchantId,
-                  name: merchantData.merchantName
+               merchantId: merchantData.merchantId,
+               merchantName: merchantData.merchantName,
+               analysis_window: {
+                  from: times.length ? toDay(Math.min(...times)) : toDay(Date.now()),
+                  to: times.length ? toDay(Math.max(...times)) : toDay(Date.now()),
+                  months: times.length
+                     ? Math.round((Math.max(...times) - Math.min(...times)) / (1000 * 60 * 60 * 24 * 30))
+                     : 0
                },
-               cleanedData: merchantData.cleanData,
-               signals: {
-                  coreSignals: merchantData.signals.coreSignals,
-                  supportingSignals: merchantData.signals.supportingSignals,
-                  rawMetrics: merchantData.signals.rawMetrics
-               },
-               kmeansAnalysis: {
-                  assignedCluster: kmeansResult.merchantAssignments[merchantIndex],
-                  clusters: kmeansResult.clusters,
-                  centroids: kmeansResult.centroids
-               },
-               dbscanAnalysis: dbscanResult,
-               trustScore: merchantScore,
+               signals: { core: merchantData.signals.core },
+               derived_indicators: scoringResult.derived_indicators,
+               anomaly_analysis: scoringResult.anomaly_analysis,
+               cluster_assignment: scoringResult.cluster_assignment,
+               trust_score: scoringResult.trust_score,
+               score_breakdown: scoringResult.score_breakdown,
+               recommended_action: scoringResult.recommended_action,
+               patterns: scoringResult.patterns,
                metadata: {
-                  totalUsers: merchantScore.totalUsers,
-                  totalSubscriptions: merchantScore.totalSubscriptions,
-                  analysisTimestamp: new Date().toISOString(),
-                  version: "2.0.0",
-                  merchantIndex: merchantIndex
+                  total_users: merchantData.cleanData.aggregated_metrics?.total_users || 0,
+                  total_subscriptions: merchantData.cleanData.aggregated_metrics?.total_subscriptions || 0,
+                  analysis_timestamp: new Date().toISOString(),
+                  pipeline_version: '2.0.0'
                }
             };
-            
-            // Generate API response
-            const apiResponse = generateApiResponse(snapshot, Date.now() - startTime);
-            
-            // Update merchant_analysis_data collection
+
+            const apiResponse = generateApiResponse({
+               cleanData: merchantData.cleanData,
+               signals: merchantData.signals,
+               scoring: scoringResult
+            });
+
+            // Keyed on merchantId — the unique indexed field (models:126).
+            // The previous version queried {'merchant.id': ...}, which is not a
+            // schema path, so with strictQuery:false it matched nothing and
+            // upserted a fresh near-empty document on every single run.
             await MerchantAnalysis.findOneAndUpdate(
-               { 'merchant.id': merchantData.merchantId },
+               { merchantId: merchantData.merchantId },
                snapshot,
-               { upsert: true, new: true }
+               { upsert: true, new: true, runValidators: true }
             );
-            
-            // Update api_response collection
+
             await ApiResponse.findOneAndUpdate(
                { merchantId: merchantData.merchantId },
                apiResponse,
-               { upsert: true, new: true }
+               { upsert: true, new: true, runValidators: true }
             );
-            
+
             updated++;
-            console.log(`   ✓ Updated ${merchantData.merchantName} (${merchantScore.trustScore}/100)`);
-            
+            console.log(`   ✓ ${merchantData.merchantName} — ${scoringResult.trust_score.score}/100 (${scoringResult.trust_score.risk_level})`);
+
          } catch (error) {
+            // The try/catch is INSIDE the loop on purpose: one bad merchant
+            // increments `failed` and the run continues, rather than aborting
+            // the whole population refresh.
             failed++;
-            console.error(`   ✗ Failed ${merchantData.merchantName}: ${error.message}`);
+            console.error(`   ✗ ${merchantData.merchantName}: ${error.message}`);
          }
       }
-      
+
       const totalTime = Date.now() - startTime;
-      
-      return {
-         success: true,
-         processed: updated,
-         failed,
-         total: allMerchants.length,
-         duration: totalTime
-      };
-      
+      console.log(`\n   Reprocessed ${updated}/${allMerchants.length} in ${totalTime}ms`);
+
+      return { success: true, processed: updated, failed, total: allMerchants.length, duration: totalTime };
+
    } catch (error) {
-      console.error('❌ Cron job error:', error);
+      console.error('Cron job error:', error);
       throw error;
    }
 }
 
 /**
- * Initialize cron job scheduler
- * @param {string} schedule - Cron schedule expression (default: every 6 hours)
+ * Schedule the job. The default cron expression is minute 0 of every 6th hour,
+ * so 00:00 / 06:00 / 12:00 / 18:00 server-local. Overridable via CRON_SCHEDULE
+ * (server.js:75). The five fields are: minute hour day-of-month month day-of-week.
+ *
+ * KNOWN LIMITATIONS, worth stating before anyone asks:
+ *  - Runs IN-PROCESS on the same event loop as the API. The clustering is the
+ *    only CPU-bound work in the system, so during a large run it blocks HTTP.
+ *    A separate worker process is the correct fix.
+ *  - No distributed lock. Two API replicas would both fire at 06:00 and race
+ *    each other's writes.
+ *  - No run at boot, and no overlap guard.
  */
 export function startCronJob(schedule = '0 */6 * * *') {
-   // Schedule the job
    const job = cron.schedule(schedule, async () => {
       try {
          await reprocessAllMerchants();
@@ -157,15 +207,13 @@ export function startCronJob(schedule = '0 */6 * * *') {
          console.error('Cron job execution failed:', error);
       }
    });
-   
-   console.log('Cron job started successfully\n');
-   
+
+   console.log(`Cron job scheduled: ${schedule}\n`);
    return job;
 }
 
-// For Testing
 export async function runImmediateReprocessing() {
-   console.log('\n Running immediate reprocessing...');
+   console.log('\nRunning immediate reprocessing...');
    return await reprocessAllMerchants();
 }
 

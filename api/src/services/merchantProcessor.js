@@ -62,6 +62,11 @@ export async function processMerchantData(rawData) {
          anomaly_analysis: scoringResult.anomaly_analysis,
          cluster_assignment: scoringResult.cluster_assignment,
          trust_score: scoringResult.trust_score,
+         // score_breakdown and recommended_action are declared in the schema
+         // (models:170-182, :207-214) and were previously never written by any
+         // code — the fields existed but were always empty. Now populated.
+         score_breakdown: scoringResult.score_breakdown,
+         recommended_action: scoringResult.recommended_action,
          patterns: scoringResult.patterns,
          metadata: {
             total_users: data.aggregated_metrics.total_users,
@@ -88,10 +93,16 @@ export async function processMerchantData(rawData) {
       );
 
       // Save to MerchantAnalysis collection (use snapshot structure)
+      // runValidators was missing here while the other two writes had it
+      // (:87, :103). That meant the enums on risk_level and pattern type, and
+      // the 0-1 bounds on the six signals, were NOT enforced on the one write
+      // that matters most. Now enforced — the ingestion modules clamp every
+      // value, so this should never fire, and if it does that is a real bug
+      // surfacing rather than bad data being stored silently.
       const merchantAnalysis = await MerchantAnalysis.findOneAndUpdate(
          { merchantId: data.merchant.merchant_id },
          snapshot,
-         { upsert: true, new: true }
+         { upsert: true, new: true, runValidators: true }
       );
 
       // Save to ApiResponse collection
@@ -130,168 +141,14 @@ export async function processMerchantData(rawData) {
 }
 
 
-//   TRUST SCORE BANDS 
-//   0-20   → CRITICAL
-//   21-40  → HIGH_RISK
-//   41-65  → NEEDS_ATTENTION
-//   66-100 → HEALTHY
-
-function calculateTrustScore(signals, dbscanResult) {
-   // Normalized weights (must sum to 1.0)
-   const weights = {
-      price_volatility: 0.35,        // Most critical indicator
-      rename_frequency: 0.30,        // Identity evasion
-      stealth_price_changes: 0.20,   // Consumer harm
-      retry_aggressiveness: 0.15     // Payment abuse
-   };
-
-   // Calculate risk (0-1 scale, higher = worse)
-   const risk =
-      (signals.price_volatility || 0) * weights.price_volatility +
-      (signals.rename_frequency || 0) * weights.rename_frequency +
-      (signals.retry_aggressiveness || 0) * weights.retry_aggressiveness +
-      (signals.stealth_price_changes || 0) * weights.stealth_price_changes;
-
-   // Convert risk to trust score (100 = best, 0 = worst)
-   let trustScore = 100 - (risk * 100);
-
-   // Outlier penalty (up to -5 points)
-   if (dbscanResult.is_outlier) {
-      trustScore -= dbscanResult.anomaly_score * 5;
-   }
-
-   // Clamp to 5-100 range (floor at 5 to avoid false certainty)
-   return Math.max(5, Math.min(100, Math.round(trustScore)));
-}
-
-/**
- * STEP 9: Pattern Detection (Human-Readable Abuse)
- */
-function detectPatterns(cleanData, signals) {
-   const patterns = [];
-   const metrics = cleanData.aggregated_metrics;
-
-   // PRICE_CREEP
-   if (signals.price_volatility > 0.6) {
-      patterns.push({
-         type: 'PRICE_CREEP',
-         severity: signals.price_volatility > 0.8 ? 'HIGH' : 'MEDIUM',
-         evidence: `Price increased from $${metrics.min_price_usd} to $${metrics.max_price_usd} without plan change`
-      });
-   }
-
-   // IDENTITY_EVASION
-   if (signals.rename_frequency > 0.6) {
-      patterns.push({
-         type: 'IDENTITY_EVASION',
-         severity: signals.rename_frequency > 0.8 ? 'CRITICAL' : 'HIGH',
-         evidence: `${metrics.unique_descriptors} different billing descriptors used`
-      });
-   }
-
-   // AGGRESSIVE_RETRY
-   if (signals.retry_aggressiveness > 0.3) {
-      patterns.push({
-         type: 'AGGRESSIVE_RETRY',
-         severity: signals.retry_aggressiveness > 0.6 ? 'HIGH' : 'MEDIUM',
-         evidence: `Failed payment retried within 24 hours`
-      });
-   }
-
-   return patterns;
-}
-
-/**
- * CLUSTER TO RISK LEVEL MAPPING (Documented)
- * ABUSIVE_PATTERN → CRITICAL
- * AGGRESSIVE_PATTERN → HIGH_RISK
- * NORMAL_PATTERN → HEALTHY/NEEDS_ATTENTION
- */
-
-function getRiskLevel(trustScore) {
-   if (trustScore >= 66) return 'HEALTHY';           // 66-100
-   if (trustScore >= 41) return 'NEEDS_ATTENTION';   // 41-65
-   if (trustScore >= 21) return 'HIGH_RISK';         // 21-40
-   return 'CRITICAL';                                 // 0-20
-}
-
-/**
- * Get headline based on risk level
- */
-function getHeadline(riskLevel) {
-   const headlines = {
-      'CRITICAL': 'High-risk recurring billing behavior detected',
-      'HIGH_RISK': 'Concerning recurring billing patterns detected',
-      'NEEDS_ATTENTION': 'Monitor this subscription for changes',
-      'HEALTHY': 'Subscription billing appears normal'
-   };
-   return headlines[riskLevel] || 'Subscription analysis complete';
-}
-
-/**
- * Get one-line reason
- */
-function getOneLineReason(signals, metrics) {
-   if (signals.price_volatility > 0.6 && signals.rename_frequency > 0.6) {
-      return 'Significant price increases with frequent merchant renaming';
-   } else if (signals.price_volatility > 0.6) {
-      return `Price increased ${metrics.price_increase_percent}% without notification`;
-   } else if (signals.rename_frequency > 0.6) {
-      return `${metrics.unique_descriptors} different billing names used`;
-   }
-   return 'Standard subscription billing pattern';
-}
-
-/**
- * Get recommended action based on risk level
- */
-function getRecommendedAction(riskLevel) {
-   const actions = {
-      'CRITICAL': 'Cancel this subscription immediately',
-      'HIGH_RISK': 'Review and consider canceling',
-      'NEEDS_ATTENTION': 'Monitor future charges',
-      'HEALTHY': 'No action needed'
-   };
-   return actions[riskLevel];
-}
-
-/**
- * Get urgency level
- */
-function getUrgency(riskLevel) {
-   const urgency = {
-      'CRITICAL': 'URGENT',
-      'HIGH_RISK': 'HIGH',
-      'NEEDS_ATTENTION': 'MEDIUM',
-      'HEALTHY': 'LOW'
-   };
-   return urgency[riskLevel];
-}
-
-/**
- * Get next steps
- */
-function getNextSteps(riskLevel) {
-   if (riskLevel === 'CRITICAL') {
-      return [
-         'Cancel via merchant platform',
-         'Contact bank to block future charges',
-         'Monitor statements for 90 days'
-      ];
-   } else if (riskLevel === 'HIGH_RISK') {
-      return [
-         'Review subscription terms',
-         'Check cancellation process',
-         'Set price alerts'
-      ];
-   } else if (riskLevel === 'NEEDS_ATTENTION') {
-      return [
-         'Monitor next billing cycle',
-         'Review price changes'
-      ];
-   }
-   return ['Continue monitoring'];
-}
+// NOTE: the scoring, banding, pattern-detection and copy helpers that used to
+// live here (calculateTrustScore, detectPatterns, getRiskLevel, getHeadline,
+// getOneLineReason, getRecommendedAction, getUrgency, getNextSteps) have moved
+// into the modules that own them:
+//   ingestion/analysis/merchantScoring.js      - scoring, bands, patterns, action
+//   ingestion/controller/generateApiResponse.js - headline, one-line reason
+// They were all dead code here: defined, never called, never exported. Keeping
+// a second copy of the scoring rules next to the live one is how the two drift.
 
 /**
  * Process multiple merchants (batch processing)

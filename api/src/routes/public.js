@@ -4,7 +4,26 @@ import Groq from 'groq-sdk';
 import { cacheHelpers, CACHE_KEYS, CACHE_TTL } from '../config/redis.js';
 
 const router = express.Router();
-const groq = new Groq({ apiKey: process.env.GROQ_API_KEY });
+
+/**
+ * Groq client, created LAZILY on first use.
+ *
+ * It used to be constructed at module load. groq-sdk throws in its constructor
+ * when GROQ_API_KEY is absent, and this module is imported by server.js before
+ * app.listen() — so a missing LLM key stopped the ENTIRE API from booting.
+ *
+ * That is the wrong failure mode: the LLM is an optional narration feature on
+ * one endpoint out of five. Every other route reads MongoDB and Redis and does
+ * not need it. Now the key is only required by the endpoint that actually calls
+ * out, and its absence degrades that one route to a clean 503 instead of taking
+ * the server down.
+ */
+let groqClient = null;
+function getGroqClient() {
+   if (!process.env.GROQ_API_KEY) return null;
+   if (!groqClient) groqClient = new Groq({ apiKey: process.env.GROQ_API_KEY });
+   return groqClient;
+}
 
 router.get('/merchants', async (req, res) => {
    try {
@@ -306,6 +325,14 @@ Respond in 3-4 short paragraphs. Be direct and actionable. Use simple language.
 `;
 
       // Call Groq API
+      const groq = getGroqClient();
+      if (!groq) {
+         return res.status(503).json({
+            success: false,
+            message: 'AI explanation is unavailable: GROQ_API_KEY is not configured. The risk assessment itself is unaffected — it is computed deterministically and is already in the response from GET /api/public/merchants/:merchantId.'
+         });
+      }
+
       const completion = await groq.chat.completions.create({
          messages: [
             {

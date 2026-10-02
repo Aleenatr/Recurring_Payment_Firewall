@@ -62,11 +62,14 @@ router.get('/merchants', async (req, res) => {
       
       const query = {};
       if (riskLevel) {
-         query['trustScore.riskClassification.level'] = riskLevel.toUpperCase();
+         // Was 'trustScore.riskClassification.level' — not a schema path, so with
+         // strictQuery:false it matched nothing and this filter always returned
+         // zero rows. The real path is trust_score.risk_level (models:164).
+         query['trust_score.risk_level'] = riskLevel.toUpperCase();
       }
       
       const merchants = await MerchantAnalysis.find(query)
-         .select('-cleanedData') // Exclude large cleanedData field
+         .select('-score_breakdown') // the per-penalty detail is noise in a list view
          .sort({ [sortBy]: order === 'desc' ? -1 : 1 })
          .skip((page - 1) * limit)
          .limit(parseInt(limit));
@@ -102,7 +105,9 @@ router.get('/merchants/:merchantId', async (req, res) => {
    try {
       const { merchantId } = req.params;
       
-      const merchant = await MerchantAnalysis.findOne({ 'merchant.id': merchantId });
+      // Was {'merchant.id': ...} — not a schema path, so this 404'd for every
+      // document the pipeline writes. The key is merchantId (models:126).
+      const merchant = await MerchantAnalysis.findOne({ merchantId });
       
       if (!merchant) {
          return res.status(404).json({
@@ -137,7 +142,11 @@ router.delete('/merchants/:merchantId', async (req, res) => {
       // Delete from all three collections
       await Promise.all([
          CleanedData.findOneAndDelete({ 'merchant.merchant_id': merchantId }),
-         MerchantAnalysis.findOneAndDelete({ 'merchant.id': merchantId }),
+         // THE WORST BUG IN THE REPO, now fixed. 'merchant.id' is not a schema
+         // path, so this delete matched nothing — DELETE reported success while
+         // silently leaving the analysis snapshot behind. Re-ingesting the same
+         // merchant then resurrected the old verdict.
+         MerchantAnalysis.findOneAndDelete({ merchantId }),
          ApiResponse.findOneAndDelete({ merchantId })
       ]);
       
@@ -167,7 +176,7 @@ router.get('/stats', async (req, res) => {
       const riskDistribution = await MerchantAnalysis.aggregate([
          {
             $group: {
-               _id: '$trustScore.riskClassification.level',
+               _id: '$trust_score.risk_level',
                count: { $sum: 1 }
             }
          }
@@ -177,12 +186,12 @@ router.get('/stats', async (req, res) => {
          {
             $group: {
                _id: null,
-               avgScore: { $avg: '$trustScore.trustScore' }
+               avgScore: { $avg: '$trust_score.score' }
             }
          }
       ]);
       
-      const outliers = await MerchantAnalysis.countDocuments({ 'trustScore.isOutlier': true });
+      const outliers = await MerchantAnalysis.countDocuments({ 'anomaly_analysis.is_outlier': true });
       
       return res.status(200).json({
          success: true,
